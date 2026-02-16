@@ -2,108 +2,88 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <title>CJ Tech - PC Gaming</title>
+  <title>CJ Tech - PC Gaming prêts à jouer</title>
+  <meta name="description" content="CJ Tech - PC Gaming testés, optimisés et prêts à jouer. Filtres par budget et GPU. Achat sécurisé via Vinted." />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0f1220;
-      color: #ffffff;
-    }
-    header {
-      background: linear-gradient(135deg, #6a00ff, #00d4ff);
-      padding: 30px 20px;
-      text-align: center;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.2rem;
-    }
-    header p {
-      margin-top: 10px;
-      opacity: 0.9;
-    }
+    body { margin:0; font-family:Arial, sans-serif; background:#0f1220; color:#fff; }
+    header { background:linear-gradient(135deg,#6a00ff,#00d4ff); padding:40px 20px; text-align:center; }
+    header h1 { margin:0; font-size:2.5rem; font-weight:800; }
+    header p { margin-top:10px; font-size:1.1rem; opacity:.95; }
+
+    nav { background:#0b0e1a; text-align:center; padding:10px; }
+    nav a { color:#00d4ff; margin:0 10px; text-decoration:none; font-weight:bold; }
+
+    .trust-bar { background:#0b0e1a; text-align:center; padding:12px; font-size:.95rem; opacity:.9; }
+
+    .filters { max-width:1100px; margin:20px auto 0; padding:0 20px; display:flex; gap:10px; flex-wrap:wrap; }
+    .filters select { padding:10px; border-radius:8px; border:none; background:#161a2b; color:#fff; }
+
     .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 30px 20px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
+      max-width:1100px; margin:0 auto; padding:30px 20px 40px;
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:25px;
     }
+
     .card {
-      background: #161a2b;
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      background:#161a2b; border-radius:14px; padding:20px;
+      box-shadow:0 6px 20px rgba(0,0,0,.35);
+      display:flex; flex-direction:column; justify-content:space-between;
+      transition:transform .2s, box-shadow .2s;
     }
-    .card img {
-      width: 100%;
-      height: 300px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 10px;
-    }
-    .card h2 {
-      margin-top: 0;
-      font-size: 1.2rem;
-      color: #00d4ff;
-    }
-    .specs {
-      font-size: 0.95rem;
-      line-height: 1.5;
-      margin: 15px 0;
-    }
-    .price {
-      font-size: 1.3rem;
-      font-weight: bold;
-      margin-bottom: 15px;
-    }
-    .btns {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    .btn {
-      flex: 1;
-      text-align: center;
-      padding: 12px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.2s;
-    }
-    .btn-vinted {
-      background: #09b1a5;
-      color: #000;
-    }
-    .btn-vinted:hover {
-      background: #0cd1c3;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      opacity: 0.7;
-      font-size: 0.9rem;
-    }
+    .card:hover { transform:translateY(-5px); box-shadow:0 10px 30px rgba(0,0,0,.5); }
+    .card img { width:100%; height:280px; object-fit:cover; border-radius:10px; margin-bottom:12px; }
+    .card h2 { margin:0; font-size:1.2rem; color:#00d4ff; }
+    .specs { font-size:.95rem; line-height:1.5; margin:15px 0; opacity:.95; }
+    .price { font-size:1.5rem; font-weight:bold; margin-bottom:15px; color:#00ff9c; }
+
+    .btns { display:flex; gap:10px; flex-wrap:wrap; }
+    .btn { flex:1; text-align:center; padding:12px; border-radius:8px; text-decoration:none; font-weight:bold; transition:.2s; }
+    .btn-vinted { background:#09b1a5; color:#000; }
+    .btn-vinted:hover { background:#0cd1c3; }
+    .btn-contact { background:transparent; border:2px solid #00d4ff; color:#00d4ff; }
+    .btn-contact:hover { background:#00d4ff; color:#000; }
+
+    footer { text-align:center; padding:25px; opacity:.7; font-size:.9rem; background:#0b0e1a; }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>🔥 CJ Tech - PC Gaming prêts à jouer 🔥</h1>
-  <p>PC testés, optimisés et garantis fluides en 1080p & 1440p pour le gaming</p>
+  <h1>🔥 CJ Tech</h1>
+  <p>PC Gaming testés, optimisés et prêts à jouer • 1080p & 1440p</p>
 </header>
+
+<nav>
+  <a href="index.html">Accueil</a> •
+  <a href="about.html">À propos</a> •
+  <a href="contact.html">Contact</a>
+</nav>
+
+<div class="trust-bar">
+  ✅ PC testés • ⚙️ Optimisés • 🛡️ Achat sécurisé via Vinted • 💬 Support disponible
+</div>
+
+<div class="filters">
+  <select id="filter-gpu">
+    <option value="all">Toutes les cartes graphiques</option>
+    <option value="1660ti">GTX 1660 Ti</option>
+    <option value="5700xt">RX 5700 XT</option>
+    <option value="6500xt">RX 6500 XT</option>
+  </select>
+
+  <select id="filter-budget">
+    <option value="all">Tous les budgets</option>
+    <option value="0-450">≤ 450 €</option>
+    <option value="451-550">450 € – 550 €</option>
+  </select>
+</div>
 
 <div class="container">
 
   <!-- PC 1 -->
-  <div class="card">
-    <img src="https://images1.vinted.net/t/06_02249_2p714E71r9A5BMxvBJcWGvv5/f800/1768902415.webp?s=7cefaafd377e61723f112db77431724487079549" alt="">
+  <div class="card" data-gpu="1660ti" data-price="500">
+    <img src="https://images1.vinted.net/t/06_02249_2p714E71r9A5BMxvBJcWGvv5/f800/1768902415.webp?s=7cefaafd377e61723f112db77431724487079549" alt="PC Gamer Ryzen 5 3500X GTX 1660 Ti">
     <h2>Ryzen 5 3500X • GTX 1660 Ti • 16 Go • SSD NVMe</h2>
     <div class="specs">
       ✔ 1080p élevé / ultra<br>
@@ -113,15 +93,14 @@
     </div>
     <div class="price">500 €</div>
     <div class="btns">
-      <a class="btn btn-vinted" href="https://www.vinted.fr/items/8108143942-pc-gamer-ssd-ryzen-5-1660-ti-200fps" target="_blank">
-        Voir sur Vinted
-      </a>
+      <a class="btn btn-vinted" href="https://www.vinted.fr/items/8108143942-pc-gamer-ssd-ryzen-5-1660-ti-200fps" target="_blank">Voir sur Vinted</a>
+      <a class="btn btn-contact" href="contact.html">Me contacter</a>
     </div>
   </div>
 
   <!-- PC 2 -->
-  <div class="card">
-    <img src="https://images1.vinted.net/t/03_00354_LbYM8VNRCxkCz7xkdEJcAXHq/f800/1769292500.webp?s=2bc52b81d5b7f1d363b5fa18a15279845fecb2c9" alt="">
+  <div class="card" data-gpu="5700xt" data-price="500">
+    <img src="https://images1.vinted.net/t/03_00354_LbYM8VNRCxkCz7xkdEJcAXHq/f800/1769292500.webp?s=2bc52b81d5b7f1d363b5fa18a15279845fecb2c9" alt="PC Gamer Ryzen 5 RX 5700 XT">
     <h2>Ryzen 5 3500X • RX 5700 XT • 16 Go • SSD NVMe</h2>
     <div class="specs">
       ✔ 1080p élevé / ultra<br>
@@ -131,16 +110,14 @@
     </div>
     <div class="price">500 €</div>
     <div class="btns">
-      <a class="btn btn-vinted" href="https://www.vinted.fr/items/8019135274-pc-gamer-ssd-ryzen-5-rx-5700xt" target="_blank">
-        Voir sur Vinted
-      </a>
+      <a class="btn btn-vinted" href="https://www.vinted.fr/items/8019135274-pc-gamer-ssd-ryzen-5-rx-5700xt" target="_blank">Voir sur Vinted</a>
+      <a class="btn btn-contact" href="contact.html">Me contacter</a>
     </div>
   </div>
 
-  <!-- PC 3 avec image -->
-  <div class="card">
-    <img src="https://images1.vinted.net/t/06_015d5_1QV1m8pxbCVUa3UfL8tMUg5p/f800/1770021842.webp?s=dc3305c9a03a8ab53e47bff8d326708c45e61aab"
-         alt="PC Gamer Ryzen 5 RX 6500 XT">
+  <!-- PC 3 -->
+  <div class="card" data-gpu="6500xt" data-price="400">
+    <img src="https://images1.vinted.net/t/06_015d5_1QV1m8pxbCVUa3UfL8tMUg5p/f800/1770021842.webp?s=dc3305c9a03a8ab53e47bff8d326708c45e61aab" alt="PC Gamer Ryzen 5 RX 6500 XT">
     <h2>Ryzen 5 3500X • RX 6500 XT • 16 Go • SSD + HDD</h2>
     <div class="specs">
       ✔ 1080p esport fluide<br>
@@ -150,9 +127,8 @@
     </div>
     <div class="price">400 €</div>
     <div class="btns">
-      <a class="btn btn-vinted" href="https://www.vinted.fr/items/8081960897-pc-gamer-ssd-16-go-ryzen-5-rx-6500xt-windows-11" target="_blank">
-        Voir sur Vinted
-      </a>
+      <a class="btn btn-vinted" href="https://www.vinted.fr/items/8081960897-pc-gamer-ssd-16-go-ryzen-5-rx-6500xt-windows-11" target="_blank">Voir sur Vinted</a>
+      <a class="btn btn-contact" href="contact.html">Me contacter</a>
     </div>
   </div>
 
@@ -161,6 +137,35 @@
 <footer>
   © 2026 - CJ Tech • PC Gaming testés, optimisés et prêts à jouer
 </footer>
+
+<script>
+  const gpuFilter = document.getElementById("filter-gpu");
+  const budgetFilter = document.getElementById("filter-budget");
+  const cards = document.querySelectorAll(".card");
+
+  function applyFilters() {
+    const gpuValue = gpuFilter.value;
+    const budgetValue = budgetFilter.value;
+
+    cards.forEach(card => {
+      const gpu = card.dataset.gpu;
+      const price = parseInt(card.dataset.price, 10);
+      let show = true;
+
+      if (gpuValue !== "all" && gpu !== gpuValue) show = false;
+
+      if (budgetValue !== "all") {
+        const [min, max] = budgetValue.split("-").map(Number);
+        if (price < min || price > max) show = false;
+      }
+
+      card.style.display = show ? "flex" : "none";
+    });
+  }
+
+  gpuFilter.addEventListener("change", applyFilters);
+  budgetFilter.addEventListener("change", applyFilters);
+</script>
 
 </body>
 </html>
