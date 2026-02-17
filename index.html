@@ -7,11 +7,72 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <style>
-    body { margin:0; font-family:Arial, sans-serif; background:#0f1220; color:#fff; }
-    header { background:linear-gradient(135deg,#6a00ff,#00d4ff); padding:40px 20px; text-align:center; }
-    header h1 { margin:0; font-size:2.5rem; font-weight:800; }
-    header p { margin-top:10px; font-size:1.1rem; opacity:.95; }
+    body { margin:0; font-family:Arial, sans-serif; background:#0f1220; color:#fff; scroll-behavior:smooth; }
 
+    /* ===== HEADER / BANNIERE ===== */
+    header {
+      position: relative;
+      height: 500px;
+      background: url("couverture.png") center center / cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 1;
+      padding: 20px;
+      animation: fadeIn 1s ease-out;
+    }
+
+    .header-content h1 {
+      margin: 0;
+      font-size: 3rem;
+      font-weight: 900;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.8);
+    }
+
+    .header-content p {
+      margin-top: 12px;
+      font-size: 1.2rem;
+      color: #e6e6e6;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+    }
+
+    .header-content .cta {
+      margin-top: 110px;
+      display: inline-block;
+      padding: 14px 26px;
+      border-radius: 30px;
+      background: linear-gradient(135deg,#00d4ff,#00ff9c); opacity: 50%;
+      color: #000;
+      font-weight: bold;
+      text-decoration: none;
+      transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 6px 20px rgba(0,0,0,.4);
+    }
+
+    .header-content .cta:hover {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 10px 30px rgba(0,0,0,.6);
+    }
+
+    @keyframes fadeIn {
+      from { opacity:0; transform: translateY(10px); }
+      to { opacity:1; transform: translateY(0); }
+    }
+
+    /* ===== NAV ===== */
     nav { background:#0b0e1a; text-align:center; padding:10px; }
     nav a { color:#00d4ff; margin:0 10px; text-decoration:none; font-weight:bold; }
 
@@ -45,13 +106,21 @@
     .btn-contact:hover { background:#00d4ff; color:#000; }
 
     footer { text-align:center; padding:25px; opacity:.7; font-size:.9rem; background:#0b0e1a; }
+
+    @media (max-width: 600px) {
+      header { height: 300px; }
+      .header-content h1 { font-size: 2.2rem; }
+    }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>🔥 CJ Tech</h1>
-  <p>PC Gaming testés, optimisés et prêts à jouer • 1080p & 1440p</p>
+  <div class="header-content">
+    <h1></h1>
+    <p></p>
+    <a href="#pcs" class="cta">Voir les PC disponibles</a>
+  </div>
 </header>
 
 <nav>
@@ -61,10 +130,10 @@
 </nav>
 
 <div class="trust-bar">
-  ✅ PC testés • ⚙️ Optimisés • 🛡️ Achat sécurisé via Vinted • 💬 Support disponible
+  ✅ PC testés • ⚙️ Optimisés • 🛡️ Achat sécurisé via Vinted ou Leboncoin • 💬 Support disponible
 </div>
 
-<div class="filters">
+<div class="filters" id="pcs">
   <select id="filter-gpu">
     <option value="all">Toutes les cartes graphiques</option>
     <option value="1660ti">GTX 1660 Ti</option>
