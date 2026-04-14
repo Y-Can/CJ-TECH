@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <title>CJ Tech - PC Gaming prêts à jouer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
 <meta name="description" content="CJ Tech (cjtech) - PC Gaming testés, optimisés et prêts à jouer. Achat sécurisé via Vinted et Leboncoin.">
 
 <meta name="keywords" content="CJ Tech, cjtech, cj tech pc, cjtech pc gaming, pc gamer cjtech, pc gaming valenciennes, pc gamer denain">  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -33,7 +35,7 @@
     *{ box-sizing:border-box; }
     body{
       margin:0;
-      font-family: Arial, sans-serif;
+      font-family: 'Inter', Arial, sans-serif;
       background: radial-gradient(1200px 600px at 20% 0%, rgba(0,212,255,.08), transparent 60%),
                   radial-gradient(900px 500px at 80% 10%, rgba(0,255,156,.06), transparent 60%),
                   var(--bg);
@@ -67,6 +69,8 @@
       max-width: 900px;
       animation: fadeIn 0.9s ease-out;
     }
+    .logo-cj{ color: var(--cyan); }
+
     .header-content h1{
       margin:0;
       font-size: 3.1rem;
@@ -223,10 +227,18 @@
       position:relative;
     }
     .card:hover{
-      
-      box-shadow: var(--shadow);
-      border-color: rgba(0,212,255,.18);
+      transform: translateY(-4px);
+      box-shadow: 0 14px 40px rgba(0,0,0,.55);
+      border-color: rgba(0,212,255,.25);
     }
+
+    @keyframes cardIn{
+      from{ opacity:0; transform: translateY(16px); }
+      to{ opacity:1; transform: translateY(0); }
+    }
+    .card{ animation: cardIn .45s ease-out both; }
+    .card:nth-child(2){ animation-delay:.08s; }
+    .card:nth-child(3){ animation-delay:.16s; }
 
     .media{
       position:relative;
@@ -369,8 +381,8 @@
 
 <header>
   <div class="header-content">
-    <h1></h1>
-    <p></p>
+    <h1><span class="logo-cj">CJ</span> Tech</h1>
+    <p>PC Gaming testés, optimisés et prêts à jouer<br>Valenciennes &amp; Denain</p>
 
     <div class="cta-row">
       <a href="#pcs" class="cta cta-primary">Voir les PC disponibles</a>
@@ -393,7 +405,7 @@
   <div class="selects">
     <select id="filter-gpu">
       <option value="all">Toutes les cartes graphiques</option>
-      <option value="1660ti">GTX 1660 Ti</option>
+      <option value="580">RX 580 8 Go</option>
       <option value="5700xt">RX 5700 XT</option>
       <option value="6500xt">RX 6500 XT</option>
     </select>
@@ -411,16 +423,16 @@
 <div class="container">
 
   <!-- PC 1 -->
-  <div class="card" data-gpu="1660ti" data-price="500">
+  <div class="card" data-gpu="580" data-price="400">
     <div class="media">
-      <img src="https://images1.vinted.net/t/06_02249_2p714E71r9A5BMxvBJcWGvv5/f800/1768902415.webp?s=7cefaafd377e61723f112db77431724487079549" alt="PC Gamer Ryzen 5 3500X GTX 1660 Ti">
+      <img src="https://images1.vinted.net/t/06_02249_2p714E71r9A5BMxvBJcWGvv5/f800/1768902415.webp?s=7cefaafd377e61723f112db77431724487079549" alt="PC Gamer Ryzen 5 3500X RX 580 8 Go" loading="lazy">
       <div class="badges">
-        <span class="badge gpu">GPU: RX 6600</span>
+        <span class="badge gpu">GPU: RX 580  8 GO</span>
         <span class="badge ready">Prêt à jouer</span>
       </div>
     </div>
 
-    <h2>Ryzen 5 3500X • RX 6600 • 16 Go • SSD NVMe</h2>
+    <h2>Ryzen 5 3500X • RX 580  8 GO • 16 Go • SSD NVMe</h2>
 
     <div class="specs">
       ✔ 1080p élevé / ultra<br>
@@ -430,15 +442,15 @@
     </div>
 
     <div class="price-row">
-      <div class="price">500 €</div>
+      <div class="price">400 €</div>
       <div class="small-note">Tests & optimisation inclus</div>
     </div>
 
     <div class="btns">
       <div class="btn-ligne">
-        <a class="btn btn-vinted" href="https://www.vinted.fr/items/8108143942-pc-gamer-ssd-ryzen-5-1660-ti-200fps" target="_blank">Voir sur Vinted</a>
+        <a class="btn btn-vinted" href="https://www.vinted.fr/items/8108143942-pc-gamer-ssd-ryzen-5-1660-ti-200fps" target="_blank" rel="noopener noreferrer">Voir sur Vinted</a>
         <!-- Mets ici ton lien Leboncoin -->
-        <a class="btn btn-leboncoin" href="#" target="_blank">Voir sur Leboncoin</a>
+        <a class="btn btn-leboncoin" href="https://www.leboncoin.fr/profile/4555ce52-c61b-4f81-9fb8-c66f889a5e4e/offers" target="_blank" rel="noopener noreferrer">Voir sur Leboncoin</a>
       </div>
 
       <a class="btn btn-contact" href="contact.html">Me contacter</a>
@@ -448,7 +460,7 @@
   <!-- PC 2 -->
   <div class="card" data-gpu="5700xt" data-price="500">
     <div class="media">
-      <img src="https://images1.vinted.net/t/03_00354_LbYM8VNRCxkCz7xkdEJcAXHq/f800/1769292500.webp?s=2bc52b81d5b7f1d363b5fa18a15279845fecb2c9" alt="PC Gamer Ryzen 5 RX 5700 XT">
+      <img src="https://images1.vinted.net/t/03_00354_LbYM8VNRCxkCz7xkdEJcAXHq/f800/1769292500.webp?s=2bc52b81d5b7f1d363b5fa18a15279845fecb2c9" alt="PC Gamer Ryzen 5 RX 5700 XT" loading="lazy">
       <div class="badges">
         <span class="badge gpu">GPU: RX 5700 XT</span>
         <span class="badge ready">Prêt à jouer</span>
@@ -471,8 +483,8 @@
 
     <div class="btns">
       <div class="btn-ligne">
-        <a class="btn btn-vinted" href="https://www.vinted.fr/items/8019135274-pc-gamer-ssd-ryzen-5-rx-5700xt" target="_blank">Voir sur Vinted</a>
-        <a class="btn btn-leboncoin" href="#" target="_blank">Voir sur Leboncoin</a>
+        <a class="btn btn-vinted" href="https://www.vinted.fr/items/8019135274-pc-gamer-ssd-ryzen-5-rx-5700xt" target="_blank" rel="noopener noreferrer">Voir sur Vinted</a>
+        <a class="btn btn-leboncoin" href="https://www.leboncoin.fr/profile/4555ce52-c61b-4f81-9fb8-c66f889a5e4e/offers" target="_blank" rel="noopener noreferrer">Voir sur Leboncoin</a>
       </div>
       <a class="btn btn-contact" href="contact.html">Me contacter</a>
     </div>
@@ -481,7 +493,7 @@
   <!-- PC 3 -->
   <div class="card" data-gpu="6500xt" data-price="400">
     <div class="media">
-      <img src="https://images1.vinted.net/t/06_015d5_1QV1m8pxbCVUa3UfL8tMUg5p/f800/1770021842.webp?s=dc3305c9a03a8ab53e47bff8d326708c45e61aab" alt="PC Gamer Ryzen 5 RX 6500 XT">
+      <img src="https://images1.vinted.net/t/06_015d5_1QV1m8pxbCVUa3UfL8tMUg5p/f800/1770021842.webp?s=dc3305c9a03a8ab53e47bff8d326708c45e61aab" alt="PC Gamer Ryzen 5 RX 6500 XT" loading="lazy">
       <div class="badges">
         <span class="badge gpu">GPU: RX 6500 XT</span>
         <span class="badge ready">Prêt à jouer</span>
@@ -504,8 +516,8 @@
 
     <div class="btns">
       <div class="btn-ligne">
-        <a class="btn btn-vinted" href="https://www.vinted.fr/items/8081960897-pc-gamer-ssd-16-go-ryzen-5-rx-6500xt-windows-11" target="_blank">Voir sur Vinted</a>
-        <a class="btn btn-leboncoin" href="#" target="_blank">Voir sur Leboncoin</a>
+        <a class="btn btn-vinted" href="https://www.vinted.fr/items/8081960897-pc-gamer-ssd-16-go-ryzen-5-rx-6500xt-windows-11" target="_blank" rel="noopener noreferrer">Voir sur Vinted</a>
+        <a class="btn btn-leboncoin" href="https://www.leboncoin.fr/profile/4555ce52-c61b-4f81-9fb8-c66f889a5e4e/offers" target="_blank" rel="noopener noreferrer">Voir sur Leboncoin</a>
       </div>
       <a class="btn btn-contact" href="contact.html">Me contacter</a>
     </div>

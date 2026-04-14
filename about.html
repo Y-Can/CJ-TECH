@@ -4,43 +4,298 @@
   <meta charset="UTF-8">
   <title>À propos - CJ Tech</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CJ Tech — Qui sommes-nous ? PC Gaming montés, testés et optimisés à Valenciennes & Denain.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+
   <style>
-    body { background:#0f1220; color:#fff; font-family:Arial; margin:0; }
-    header, footer { background:#0b0e1a; padding:20px; text-align:center; }
-    nav a { color:#00d4ff; margin:0 10px; text-decoration:none; font-weight:bold; }
-    .content { max-width:800px; margin:40px auto; padding:20px; }
-    h1 { color:#00d4ff; }
+    :root{
+      --bg:#0f1220;
+      --panel:#161a2b;
+      --text:#ffffff;
+      --muted:#cdd3e0;
+      --cyan:#00d4ff;
+      --green:#00ff9c;
+      --radius:16px;
+      --shadow: 0 10px 30px rgba(0,0,0,.45);
+      --shadowSoft: 0 6px 20px rgba(0,0,0,.35);
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: 'Inter', Arial, sans-serif;
+      background: radial-gradient(1200px 600px at 20% 0%, rgba(0,212,255,.08), transparent 60%),
+                  radial-gradient(900px 500px at 80% 10%, rgba(0,255,156,.06), transparent 60%),
+                  var(--bg);
+      color:var(--text);
+      scroll-behavior:smooth;
+    }
+
+    /* ===== HEADER ===== */
+    header{
+      position:relative;
+      height: 220px;
+      background: url("couverture.png") center center / cover no-repeat;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      overflow:hidden;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    header::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: linear-gradient(180deg, rgba(0,0,0,.5), rgba(15,18,32,.92));
+    }
+    .header-content{
+      position:relative;
+      z-index:1;
+      animation: fadeIn .8s ease-out;
+    }
+    .header-content h1{
+      margin:0;
+      font-size:2.4rem;
+      font-weight:900;
+      text-shadow: 0 4px 18px rgba(0,0,0,.75);
+    }
+    .logo-cj{ color:var(--cyan); }
+    .header-content p{
+      margin:8px 0 0;
+      font-size:1rem;
+      color:#dce8f0;
+      opacity:.9;
+    }
+
+    @keyframes fadeIn{
+      from{ opacity:0; transform:translateY(8px); }
+      to{ opacity:1; transform:translateY(0); }
+    }
+
+    /* ===== NAV ===== */
+    nav{
+      position:sticky;
+      top:0;
+      z-index:10;
+      background:rgba(11,14,26,.8);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(255,255,255,.06);
+      text-align:center;
+      padding:12px 10px;
+    }
+    nav a{
+      color:var(--cyan);
+      margin:0 12px;
+      text-decoration:none;
+      font-weight:900;
+      opacity:.9;
+    }
+    nav a:hover{ opacity:1; text-decoration:underline; }
+
+    /* ===== CONTENT ===== */
+    .content{
+      max-width:820px;
+      margin:48px auto;
+      padding:0 20px 60px;
+      animation: fadeIn .7s ease-out .1s both;
+    }
+
+    .section-title{
+      font-size:1.7rem;
+      font-weight:900;
+      color:var(--cyan);
+      margin:0 0 20px;
+    }
+
+    .intro-text{
+      font-size:1.08rem;
+      line-height:1.75;
+      color:var(--muted);
+      margin-bottom:36px;
+    }
+    .intro-text b{ color:#fff; }
+
+    /* ===== PROCESS STEPS ===== */
+    .steps{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap:16px;
+      margin:28px 0 48px;
+    }
+    .step{
+      background:linear-gradient(160deg, rgba(22,26,43,.95), rgba(22,26,43,.8));
+      border:1px solid rgba(255,255,255,.07);
+      border-radius:var(--radius);
+      padding:22px 18px;
+      text-align:center;
+      box-shadow:var(--shadowSoft);
+      transition:transform .18s ease, border-color .18s ease;
+    }
+    .step:hover{
+      transform:translateY(-4px);
+      border-color:rgba(0,212,255,.22);
+    }
+    .step-icon{
+      font-size:2rem;
+      margin-bottom:10px;
+    }
+    .step h3{
+      margin:0 0 8px;
+      font-size:1rem;
+      font-weight:900;
+      color:#eaf7ff;
+    }
+    .step p{
+      margin:0;
+      font-size:.88rem;
+      color:var(--muted);
+      line-height:1.55;
+    }
+
+    /* ===== GARANTIES ===== */
+    .garanties{
+      background:linear-gradient(160deg, rgba(22,26,43,.95), rgba(22,26,43,.8));
+      border:1px solid rgba(255,255,255,.07);
+      border-radius:var(--radius);
+      padding:26px 28px;
+      box-shadow:var(--shadowSoft);
+      margin-bottom:40px;
+    }
+    .garanties ul{
+      margin:0;
+      padding:0;
+      list-style:none;
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap:10px;
+    }
+    .garanties li{
+      font-size:.97rem;
+      color:var(--muted);
+      padding:4px 0;
+    }
+    .garanties li b{ color:#fff; }
+
+    /* ===== CTA ===== */
+    .cta-row{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .cta{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:14px 24px;
+      border-radius:999px;
+      font-weight:900;
+      text-decoration:none;
+      transition:transform .15s ease, box-shadow .15s ease;
+      box-shadow:var(--shadowSoft);
+    }
+    .cta-primary{
+      background:linear-gradient(135deg, rgba(0,212,255,.95), rgba(0,255,156,.9));
+      color:#041018;
+    }
+    .cta-primary:hover{ transform:translateY(-2px); box-shadow:var(--shadow); }
+    .cta-secondary{
+      background:rgba(22,26,43,.6);
+      border:1px solid rgba(255,255,255,.10);
+      color:var(--text);
+    }
+    .cta-secondary:hover{ transform:translateY(-2px); background:rgba(22,26,43,.85); }
+
+    footer{
+      text-align:center;
+      padding:26px 16px;
+      opacity:.75;
+      font-size:.9rem;
+      background:rgba(11,14,26,.85);
+      border-top:1px solid rgba(255,255,255,.06);
+    }
+
+    @media(max-width:600px){
+      header{ height:160px; }
+      .header-content h1{ font-size:1.8rem; }
+    }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>CJ Tech</h1>
-  <nav>
-    <a href="index.html">Accueil</a> •
-    <a href="about.html">À propos</a> •
-    <a href="contact.html">Contact</a>
-  </nav>
+  <div class="header-content">
+    <h1><span class="logo-cj">CJ</span> Tech</h1>
+    <p>PC Gaming testés, optimisés et prêts à jouer</p>
+  </div>
 </header>
 
+<nav>
+  <a href="index.html">Accueil</a> •
+  <a href="about.html">À propos</a> •
+  <a href="contact.html">Contact</a>
+</nav>
+
 <div class="content">
-  <h1>À propos</h1>
-  <p>
-    CJ Tech est spécialisé dans la vente de PC gaming montés, testés et optimisés pour offrir
-    d’excellentes performances en 1080p et 1440p.
-  </p>
-  <p>
-    Chaque machine est assemblée avec soin, stress-testée et configurée avant la vente afin de garantir
-    une expérience fluide et fiable dès le premier démarrage.
-  </p>
-  <p>
-    L’objectif : proposer des PC performants, au meilleur rapport qualité/prix, prêts à jouer,
-    sans mauvaise surprise.
-  </p>
+
+  <h2 class="section-title">À propos de CJ Tech</h2>
+
+  <div class="intro-text">
+    <b>CJ Tech</b> est spécialisé dans la vente de PC gaming montés, testés et optimisés,
+    basé à <b>Valenciennes &amp; Denain</b>. Chaque machine est assemblée avec soin,
+    stress-testée et entièrement configurée avant la vente — pour que tu joues
+    dès le premier démarrage, sans mauvaise surprise.<br><br>
+    L'objectif est simple : proposer des <b>PC performants au meilleur rapport qualité/prix</b>,
+    vendus en toute transparence via Vinted et Leboncoin.
+  </div>
+
+  <h2 class="section-title">Notre processus</h2>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-icon">🔧</div>
+      <h3>Assemblage</h3>
+      <p>Sélection des composants, montage soigné et gestion des câbles.</p>
+    </div>
+    <div class="step">
+      <div class="step-icon">🧪</div>
+      <h3>Stress-test</h3>
+      <p>Test intensif CPU &amp; GPU pour vérifier la stabilité et la température.</p>
+    </div>
+    <div class="step">
+      <div class="step-icon">⚙️</div>
+      <h3>Optimisation</h3>
+      <p>Windows 11 propre, pilotes à jour, démarrage rapide configuré.</p>
+    </div>
+    <div class="step">
+      <div class="step-icon">🎮</div>
+      <h3>Prêt à jouer</h3>
+      <p>Livré ou remis en main propre — tu joues le jour même.</p>
+    </div>
+  </div>
+
+  <h2 class="section-title">Nos engagements</h2>
+
+  <div class="garanties">
+    <ul>
+      <li>✅ <b>PC testés</b> avant chaque vente</li>
+      <li>✅ <b>Windows 11</b> activé et à jour</li>
+      <li>✅ <b>Pilotes GPU</b> installés</li>
+      <li>✅ <b>Achat sécurisé</b> via Vinted ou Leboncoin</li>
+      <li>✅ <b>Support</b> disponible après achat</li>
+      <li>✅ <b>Transparent</b> sur les specs et l'état</li>
+    </ul>
+  </div>
+
+  <div class="cta-row">
+    <a href="index.html#pcs" class="cta cta-primary">Voir les PC disponibles</a>
+    <a href="contact.html" class="cta cta-secondary">Me contacter</a>
+  </div>
+
 </div>
 
 <footer>
-  © 2026 - CJ Tech
+  © 2026 - CJ Tech • PC Gaming testés, optimisés et prêts à jouer
 </footer>
 
 </body>

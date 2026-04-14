@@ -4,59 +4,241 @@
   <meta charset="UTF-8">
   <title>Contact - CJ Tech</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Contactez CJ Tech pour toute question, devis ou information sur nos PC Gaming prêts à jouer." />
+  <meta name="description" content="Contactez CJ Tech pour toute question, devis ou information sur nos PC Gaming prêts à jouer — Valenciennes & Denain.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+
   <style>
-    body { background:#0f1220; color:#fff; font-family:Arial, sans-serif; margin:0; }
-    header, footer { background:#0b0e1a; padding:20px; text-align:center; }
-    nav a { color:#00d4ff; margin:0 10px; text-decoration:none; font-weight:bold; }
-    .content { max-width:600px; margin:40px auto; padding:20px; }
-    h1 { color:#00d4ff; }
-    .box { background:#161a2b; padding:25px; border-radius:12px; }
-    .contact-item { margin:15px 0; }
-    .contact-item a { color:#00d4ff; text-decoration:none; font-weight:bold; }
-    .contact-item a:hover { text-decoration:underline; }
-    .hint { opacity:0.8; font-size:0.9rem; margin-top:10px; }
+    :root{
+      --bg:#0f1220;
+      --panel:#161a2b;
+      --text:#ffffff;
+      --muted:#cdd3e0;
+      --cyan:#00d4ff;
+      --green:#00ff9c;
+      --vinted:#09b1a5;
+      --vintedHover:#0cd1c3;
+      --lbc:#ff6a00;
+      --lbcHover:#ff8126;
+      --radius:16px;
+      --shadow: 0 10px 30px rgba(0,0,0,.45);
+      --shadowSoft: 0 6px 20px rgba(0,0,0,.35);
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: 'Inter', Arial, sans-serif;
+      background: radial-gradient(1200px 600px at 20% 0%, rgba(0,212,255,.08), transparent 60%),
+                  radial-gradient(900px 500px at 80% 10%, rgba(0,255,156,.06), transparent 60%),
+                  var(--bg);
+      color:var(--text);
+      scroll-behavior:smooth;
+    }
+
+    /* ===== HEADER ===== */
+    header{
+      position:relative;
+      height:220px;
+      background: url("couverture.png") center center / cover no-repeat;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      overflow:hidden;
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    header::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg, rgba(0,0,0,.5), rgba(15,18,32,.92));
+    }
+    .header-content{
+      position:relative;
+      z-index:1;
+      animation:fadeIn .8s ease-out;
+    }
+    .header-content h1{
+      margin:0;
+      font-size:2.4rem;
+      font-weight:900;
+      text-shadow:0 4px 18px rgba(0,0,0,.75);
+    }
+    .logo-cj{ color:var(--cyan); }
+    .header-content p{
+      margin:8px 0 0;
+      font-size:1rem;
+      color:#dce8f0;
+      opacity:.9;
+    }
+
+    @keyframes fadeIn{
+      from{ opacity:0; transform:translateY(8px); }
+      to{ opacity:1; transform:translateY(0); }
+    }
+
+    /* ===== NAV ===== */
+    nav{
+      position:sticky;
+      top:0;
+      z-index:10;
+      background:rgba(11,14,26,.8);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(255,255,255,.06);
+      text-align:center;
+      padding:12px 10px;
+    }
+    nav a{
+      color:var(--cyan);
+      margin:0 12px;
+      text-decoration:none;
+      font-weight:900;
+      opacity:.9;
+    }
+    nav a:hover{ opacity:1; text-decoration:underline; }
+
+    /* ===== CONTENT ===== */
+    .content{
+      max-width:680px;
+      margin:48px auto;
+      padding:0 20px 60px;
+      animation:fadeIn .7s ease-out .1s both;
+    }
+    .section-title{
+      font-size:1.7rem;
+      font-weight:900;
+      color:var(--cyan);
+      margin:0 0 24px;
+    }
+
+    /* ===== CONTACT CARDS ===== */
+    .contact-grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap:16px;
+      margin-bottom:28px;
+    }
+    .contact-card{
+      background:linear-gradient(160deg, rgba(22,26,43,.95), rgba(22,26,43,.8));
+      border:1px solid rgba(255,255,255,.07);
+      border-radius:var(--radius);
+      padding:22px 20px;
+      text-align:center;
+      text-decoration:none;
+      color:var(--text);
+      box-shadow:var(--shadowSoft);
+      transition:transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:10px;
+    }
+    .contact-card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 14px 36px rgba(0,0,0,.5);
+      border-color:rgba(0,212,255,.25);
+    }
+    .contact-card .icon{
+      font-size:2rem;
+    }
+    .contact-card .label{
+      font-size:.82rem;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:.5px;
+      color:var(--muted);
+    }
+    .contact-card .value{
+      font-size:1rem;
+      font-weight:700;
+      color:#eaf7ff;
+      word-break:break-all;
+    }
+
+    .contact-card.vinted{ border-color:rgba(9,177,165,.2); }
+    .contact-card.vinted:hover{ border-color:rgba(9,177,165,.5); }
+    .contact-card.vinted .value{ color:var(--vinted); }
+
+    .contact-card.lbc{ border-color:rgba(255,106,0,.2); }
+    .contact-card.lbc:hover{ border-color:rgba(255,106,0,.5); }
+    .contact-card.lbc .value{ color:var(--lbc); }
+
+    .contact-card.email:hover{ border-color:rgba(0,212,255,.4); }
+    .contact-card.email .value{ color:var(--cyan); }
+
+    /* ===== HINT BOX ===== */
+    .hint-box{
+      background:rgba(0,212,255,.06);
+      border:1px solid rgba(0,212,255,.15);
+      border-radius:var(--radius);
+      padding:18px 22px;
+      font-size:.95rem;
+      color:var(--muted);
+      line-height:1.65;
+    }
+    .hint-box b{ color:#fff; }
+
+    footer{
+      text-align:center;
+      padding:26px 16px;
+      opacity:.75;
+      font-size:.9rem;
+      background:rgba(11,14,26,.85);
+      border-top:1px solid rgba(255,255,255,.06);
+    }
+
+    @media(max-width:600px){
+      header{ height:160px; }
+      .header-content h1{ font-size:1.8rem; }
+    }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>CJ Tech</h1>
-  <nav>
-    <a href="index.html">Accueil</a> •
-    <a href="about.html">À propos</a> •
-    <a href="contact.html">Contact</a>
-  </nav>
+  <div class="header-content">
+    <h1><span class="logo-cj">CJ</span> Tech</h1>
+    <p>PC Gaming testés, optimisés et prêts à jouer</p>
+  </div>
 </header>
 
+<nav>
+  <a href="index.html">Accueil</a> •
+  <a href="about.html">À propos</a> •
+  <a href="contact.html">Contact</a>
+</nav>
+
 <div class="content">
-  <h1>Contact</h1>
-  <div class="box">
-    <p>📩 Pour toute question, devis ou information sur nos PC Gaming :</p>
 
-    <div class="contact-item">
-      📧 Email : 
-      <a href="mailto:chad@cj-tech.fr">chad@cj-tech.fr</a>
-    </div>
+  <h2 class="section-title">Nous contacter</h2>
 
-    <div class="contact-item">
-      🛒 Vinted : 
-      <a href="https://www.vinted.fr/member/49189698" target="_blank">
-        Voir mon profil Vinted
-      </a>
-    </div>
+  <div class="contact-grid">
 
-    <div class="contact-item">
-      🛒 Leboncoin : 
-      <a href="https://www.leboncoin.fr/profile/4555ce52-c61b-4f81-9fb8-c66f889a5e4e" target="_blank">
-        Voir mon profil Leboncoin
-      </a>
-    </div>
+    <a class="contact-card email" href="mailto:chad@cj-tech.fr">
+      <div class="icon">📧</div>
+      <div class="label">Email</div>
+      <div class="value">chad@cj-tech.fr</div>
+    </a>
 
-    <p class="hint">
-      💡 Réponse rapide par email ou messagerie Vinted / Leboncoin.
-    </p>
+    <a class="contact-card vinted" href="https://www.vinted.fr/member/49189698" target="_blank" rel="noopener noreferrer">
+      <div class="icon">🛒</div>
+      <div class="label">Vinted</div>
+      <div class="value">Voir mon profil</div>
+    </a>
+
+    <a class="contact-card lbc" href="https://www.leboncoin.fr/profile/4555ce52-c61b-4f81-9fb8-c66f889a5e4e" target="_blank" rel="noopener noreferrer">
+      <div class="icon">🛒</div>
+      <div class="label">Leboncoin</div>
+      <div class="value">Voir mon profil</div>
+    </a>
+
   </div>
+
+  <div class="hint-box">
+    💡 <b>Réponse rapide</b> — je réponds en général dans la journée par email ou messagerie Vinted / Leboncoin.<br>
+    N'hésite pas à poser toutes tes questions : config, compatibilité, disponibilité, livraison, etc.
+  </div>
+
 </div>
 
 <footer>
