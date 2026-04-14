@@ -1,0 +1,41 @@
+[
+  {
+    "id": 8108143942,
+    "nom": "Ryzen 5 3500X • RX 580 8 Go • 16 Go • SSD NVMe",
+    "gpu": "580",
+    "prix": 400,
+    "image": "https://images1.vinted.net/t/06_02249_2p714E71r9A5BMxvBJcWGvv5/f800/1768902415.webp?s=7cefaafd377e61723f112db77431724487079549",
+    "specs": ["1080p élevé / ultra", "+240 FPS sur jeux esport", "512 Go SSD NVMe", "Windows 11 prêt à l'emploi"],
+    "note": "Tests & optimisation inclus",
+    "vinted": "https://www.vinted.fr/items/8108143942",
+    "leboncoin": "https://www.leboncoin.fr/profile/4555ce52-c61b-4f81-9fb8-c66f889a5e4e/offers",
+    "vendu": false,
+    "source": "manuel"
+  },
+  {
+    "id": 8019135274,
+    "nom": "Ryzen 5 3500X • RX 5700 XT • 16 Go • SSD NVMe",
+    "gpu": "5700xt",
+    "prix": 500,
+    "image": "https://images1.vinted.net/t/03_00354_LbYM8VNRCxkCz7xkdEJcAXHq/f800/1769292500.webp?s=2bc52b81d5b7f1d363b5fa18a15279845fecb2c9",
+    "specs": ["1080p élevé / ultra", "Très puissant pour AAA", "512 Go SSD NVMe", "Windows 11 prêt à l'emploi"],
+    "note": "Silencieux & stable",
+    "vinted": "https://www.vinted.fr/items/8019135274",
+    "leboncoin": "https://www.leboncoin.fr/profile/4555ce52-c61b-4f81-9fb8-c66f889a5e4e/offers",
+    "vendu": false,
+    "source": "manuel"
+  },
+  {
+    "id": 8081960897,
+    "nom": "Ryzen 5 3500X • RX 6500 XT • 16 Go • SSD + HDD",
+    "gpu": "6500xt",
+    "prix": 400,
+    "image": "https://images1.vinted.net/t/06_015d5_1QV1m8pxbCVUa3UfL8tMUg5p/f800/1770021842.webp?s=dc3305c9a03a8ab53e47bff8d326708c45e61aab",
+    "specs": ["1080p esport fluide", "Idéal Fortnite / Valorant", "256 Go SSD + 500 Go HDD", "Windows 11 prêt à l'emploi"],
+    "note": "Meilleur budget",
+    "vinted": "https://www.vinted.fr/items/8081960897",
+    "leboncoin": "https://www.leboncoin.fr/profile/4555ce52-c61b-4f81-9fb8-c66f889a5e4e/offers",
+    "vendu": false,
+    "source": "manuel"
+  }
+]

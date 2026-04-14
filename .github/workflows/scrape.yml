@@ -1,0 +1,35 @@
+name: Mise à jour des annonces Vinted
+
+on:
+  schedule:
+    - cron: "0 */4 * * *"   # toutes les 4 heures
+  workflow_dispatch:          # bouton manuel dans GitHub si besoin
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: Installer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Installer les dépendances
+        run: pip install requests
+
+      - name: Lancer le scraper Vinted
+        run: python scrape_vinted.py
+
+      - name: Pousser produits.json si modifié
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add produits.json
+          git diff --cached --quiet || git commit -m "maj: annonces Vinted $(date +'%d/%m/%Y %H:%M')"
+          git push

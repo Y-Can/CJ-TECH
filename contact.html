@@ -5,6 +5,13 @@
   <title>Contact - CJ Tech</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Contactez CJ Tech pour toute question, devis ou information sur nos PC Gaming prêts à jouer — Valenciennes & Denain.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Contact - CJ Tech">
+  <meta property="og:description" content="Contactez CJ Tech pour toute question sur nos PC Gaming — Valenciennes & Denain.">
+  <meta property="og:image" content="couverture.png">
+  <meta property="og:locale" content="fr_FR">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
 
@@ -166,6 +173,86 @@
     .contact-card.email:hover{ border-color:rgba(0,212,255,.4); }
     .contact-card.email .value{ color:var(--cyan); }
 
+    .contact-card.whatsapp{ border-color:rgba(37,211,102,.2); }
+    .contact-card.whatsapp:hover{ border-color:rgba(37,211,102,.5); }
+    .contact-card.whatsapp .value{ color:#25d366; }
+
+    /* ===== FORMULAIRE ===== */
+    .form-section{
+      margin-top:36px;
+    }
+    .form-section .section-title{
+      margin-bottom:16px;
+    }
+    .contact-form{
+      background:linear-gradient(160deg, rgba(22,26,43,.95), rgba(22,26,43,.8));
+      border:1px solid rgba(255,255,255,.07);
+      border-radius:var(--radius);
+      padding:28px 26px;
+      box-shadow:var(--shadowSoft);
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+    }
+    .contact-form label{
+      font-size:.88rem;
+      font-weight:700;
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:.4px;
+      display:block;
+      margin-bottom:6px;
+    }
+    .contact-form input,
+    .contact-form select,
+    .contact-form textarea{
+      width:100%;
+      padding:12px 14px;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(11,14,26,.7);
+      color:#fff;
+      font-family:'Inter',Arial,sans-serif;
+      font-size:.97rem;
+      outline:none;
+      transition:border-color .15s ease;
+    }
+    .contact-form input:focus,
+    .contact-form select,
+    .contact-form textarea:focus{
+      border-color:rgba(0,212,255,.5);
+    }
+    .contact-form textarea{
+      resize:vertical;
+      min-height:110px;
+    }
+    .contact-form select option{
+      background:#161a2b;
+    }
+    .btn-submit{
+      padding:14px 28px;
+      border:none;
+      border-radius:999px;
+      background:linear-gradient(135deg, rgba(0,212,255,.95), rgba(0,255,156,.9));
+      color:#041018;
+      font-weight:900;
+      font-size:1rem;
+      cursor:pointer;
+      transition:transform .15s ease, filter .15s ease;
+      align-self:flex-start;
+    }
+    .btn-submit:hover{ transform:translateY(-2px); filter:brightness(1.04); }
+    .form-success{
+      display:none;
+      padding:14px 18px;
+      background:rgba(0,255,156,.08);
+      border:1px solid rgba(0,255,156,.2);
+      border-radius:12px;
+      color:var(--green);
+      font-weight:700;
+      font-size:.97rem;
+    }
+
     /* ===== HINT BOX ===== */
     .hint-box{
       background:rgba(0,212,255,.06);
@@ -232,11 +319,50 @@
       <div class="value">Voir mon profil</div>
     </a>
 
+    <!-- WhatsApp : remplace le numéro 33XXXXXXXXX par ton vrai numéro -->
+    <a class="contact-card whatsapp" href="https://wa.me/33XXXXXXXXX?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%20par%20un%20de%20vos%20PC%20Gaming%20!" target="_blank" rel="noopener noreferrer">
+      <div class="icon">💬</div>
+      <div class="label">WhatsApp</div>
+      <div class="value">Écrire un message</div>
+    </a>
+
   </div>
 
   <div class="hint-box">
-    💡 <b>Réponse rapide</b> — je réponds en général dans la journée par email ou messagerie Vinted / Leboncoin.<br>
+    💡 <b>Réponse rapide</b> — je réponds en général dans la journée par email, WhatsApp ou messagerie Vinted / Leboncoin.<br>
     N'hésite pas à poser toutes tes questions : config, compatibilité, disponibilité, livraison, etc.
+  </div>
+
+  <!-- Formulaire de contact -->
+  <div class="form-section">
+    <h2 class="section-title">Envoyer un message</h2>
+
+    <!-- Formspree : crée un compte sur formspree.io et remplace YOUR_FORM_ID -->
+    <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" id="contactForm">
+      <div>
+        <label for="name">Ton prénom</label>
+        <input type="text" id="name" name="name" placeholder="Ex : Thomas" required>
+      </div>
+      <div>
+        <label for="email">Ton email</label>
+        <input type="email" id="email" name="email" placeholder="exemple@mail.com" required>
+      </div>
+      <div>
+        <label for="subject">PC concerné</label>
+        <select id="subject" name="subject">
+          <option value="Ryzen 5 - RX 580 8Go (400€)">Ryzen 5 — RX 580 8Go (400€)</option>
+          <option value="Ryzen 5 - RX 5700 XT (500€)">Ryzen 5 — RX 5700 XT (500€)</option>
+          <option value="Ryzen 5 - RX 6500 XT (400€)">Ryzen 5 — RX 6500 XT (400€)</option>
+          <option value="Question générale">Question générale</option>
+        </select>
+      </div>
+      <div>
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Pose ta question, demande la dispo, les frais de port..." required></textarea>
+      </div>
+      <button type="submit" class="btn-submit">Envoyer le message</button>
+      <div class="form-success" id="formSuccess">✅ Message envoyé ! Je te réponds dans la journée.</div>
+    </form>
   </div>
 
 </div>
@@ -244,6 +370,33 @@
 <footer>
   © 2026 - CJ Tech • Contact : chad@cj-tech.fr
 </footer>
+
+<script>
+  const form = document.getElementById('contactForm');
+  if(form){
+    form.addEventListener('submit', async function(e){
+      e.preventDefault();
+      const btn = form.querySelector('.btn-submit');
+      btn.textContent = 'Envoi en cours…';
+      btn.disabled = true;
+      const data = new FormData(form);
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+      if(response.ok){
+        form.reset();
+        document.getElementById('formSuccess').style.display = 'block';
+        btn.style.display = 'none';
+      } else {
+        btn.textContent = 'Envoyer le message';
+        btn.disabled = false;
+        alert('Erreur lors de l\'envoi. Contacte-moi directement à chad@cj-tech.fr');
+      }
+    });
+  }
+</script>
 
 </body>
 </html>

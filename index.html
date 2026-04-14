@@ -5,9 +5,16 @@
   <title>CJ Tech - PC Gaming prêts à jouer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
-<meta name="description" content="CJ Tech (cjtech) - PC Gaming testés, optimisés et prêts à jouer. Achat sécurisé via Vinted et Leboncoin.">
+  <meta name="description" content="CJ Tech (cjtech) - PC Gaming testés, optimisés et prêts à jouer. Achat sécurisé via Vinted et Leboncoin.">
+  <meta name="keywords" content="CJ Tech, cjtech, cj tech pc, cjtech pc gaming, pc gamer cjtech, pc gaming valenciennes, pc gamer denain">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<meta name="keywords" content="CJ Tech, cjtech, cj tech pc, cjtech pc gaming, pc gamer cjtech, pc gaming valenciennes, pc gamer denain">  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Open Graph / réseaux sociaux -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CJ Tech - PC Gaming prêts à jouer">
+  <meta property="og:description" content="PC Gaming testés, optimisés et prêts à jouer. Valenciennes & Denain. Achat sécurisé via Vinted et Leboncoin.">
+  <meta property="og:image" content="couverture.png">
+  <meta property="og:locale" content="fr_FR">
 
   <style>
     :root{
@@ -275,6 +282,30 @@
     }
     .badge.gpu{ background: rgba(0,212,255,.92); }
     .badge.ready{ background: rgba(0,255,156,.88); }
+    .badge.sold{ background: rgba(255,60,60,.90); color:#fff; }
+
+    /* Card vendue : grisée + non cliquable */
+    .card.sold-out{
+      opacity:.55;
+      pointer-events:none;
+      filter: grayscale(.6);
+    }
+    .card.sold-out::before{
+      content:"VENDU";
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%) rotate(-12deg);
+      font-size:2.4rem;
+      font-weight:900;
+      color:rgba(255,60,60,.85);
+      border:4px solid rgba(255,60,60,.75);
+      padding:8px 22px;
+      border-radius:8px;
+      z-index:5;
+      pointer-events:none;
+      letter-spacing:2px;
+    }
 
     .card h2{
       margin: 2px 0 0;
@@ -420,109 +451,10 @@
   <div class="hint">Astuce : clique sur un PC puis choisis Vinted ou Leboncoin 👇</div>
 </div>
 
-<div class="container">
-
-  <!-- PC 1 -->
-  <div class="card" data-gpu="580" data-price="400">
-    <div class="media">
-      <img src="https://images1.vinted.net/t/06_02249_2p714E71r9A5BMxvBJcWGvv5/f800/1768902415.webp?s=7cefaafd377e61723f112db77431724487079549" alt="PC Gamer Ryzen 5 3500X RX 580 8 Go" loading="lazy">
-      <div class="badges">
-        <span class="badge gpu">GPU: RX 580  8 GO</span>
-        <span class="badge ready">Prêt à jouer</span>
-      </div>
-    </div>
-
-    <h2>Ryzen 5 3500X • RX 580  8 GO • 16 Go • SSD NVMe</h2>
-
-    <div class="specs">
-      ✔ 1080p élevé / ultra<br>
-      ✔ +240 FPS sur jeux esport<br>
-      ✔ 512 Go SSD NVMe<br>
-      ✔ Windows 11 prêt à l’emploi
-    </div>
-
-    <div class="price-row">
-      <div class="price">400 €</div>
-      <div class="small-note">Tests & optimisation inclus</div>
-    </div>
-
-    <div class="btns">
-      <div class="btn-ligne">
-        <a class="btn btn-vinted" href="https://www.vinted.fr/items/8108143942-pc-gamer-ssd-ryzen-5-1660-ti-200fps" target="_blank" rel="noopener noreferrer">Voir sur Vinted</a>
-        <!-- Mets ici ton lien Leboncoin -->
-        <a class="btn btn-leboncoin" href="https://www.leboncoin.fr/profile/4555ce52-c61b-4f81-9fb8-c66f889a5e4e/offers" target="_blank" rel="noopener noreferrer">Voir sur Leboncoin</a>
-      </div>
-
-      <a class="btn btn-contact" href="contact.html">Me contacter</a>
-    </div>
+<div class="container" id="grid">
+  <div class="loading" style="grid-column:1/-1;text-align:center;padding:60px 0;color:var(--muted);font-size:1.05rem;">
+    Chargement des annonces…
   </div>
-
-  <!-- PC 2 -->
-  <div class="card" data-gpu="5700xt" data-price="500">
-    <div class="media">
-      <img src="https://images1.vinted.net/t/03_00354_LbYM8VNRCxkCz7xkdEJcAXHq/f800/1769292500.webp?s=2bc52b81d5b7f1d363b5fa18a15279845fecb2c9" alt="PC Gamer Ryzen 5 RX 5700 XT" loading="lazy">
-      <div class="badges">
-        <span class="badge gpu">GPU: RX 5700 XT</span>
-        <span class="badge ready">Prêt à jouer</span>
-      </div>
-    </div>
-
-    <h2>Ryzen 5 3500X • RX 5700 XT • 16 Go • SSD NVMe</h2>
-
-    <div class="specs">
-      ✔ 1080p élevé / ultra<br>
-      ✔ Très puissant pour AAA<br>
-      ✔ 512 Go SSD NVMe<br>
-      ✔ Windows 11 prêt à l’emploi
-    </div>
-
-    <div class="price-row">
-      <div class="price">500 €</div>
-      <div class="small-note">Silencieux & stable</div>
-    </div>
-
-    <div class="btns">
-      <div class="btn-ligne">
-        <a class="btn btn-vinted" href="https://www.vinted.fr/items/8019135274-pc-gamer-ssd-ryzen-5-rx-5700xt" target="_blank" rel="noopener noreferrer">Voir sur Vinted</a>
-        <a class="btn btn-leboncoin" href="https://www.leboncoin.fr/profile/4555ce52-c61b-4f81-9fb8-c66f889a5e4e/offers" target="_blank" rel="noopener noreferrer">Voir sur Leboncoin</a>
-      </div>
-      <a class="btn btn-contact" href="contact.html">Me contacter</a>
-    </div>
-  </div>
-
-  <!-- PC 3 -->
-  <div class="card" data-gpu="6500xt" data-price="400">
-    <div class="media">
-      <img src="https://images1.vinted.net/t/06_015d5_1QV1m8pxbCVUa3UfL8tMUg5p/f800/1770021842.webp?s=dc3305c9a03a8ab53e47bff8d326708c45e61aab" alt="PC Gamer Ryzen 5 RX 6500 XT" loading="lazy">
-      <div class="badges">
-        <span class="badge gpu">GPU: RX 6500 XT</span>
-        <span class="badge ready">Prêt à jouer</span>
-      </div>
-    </div>
-
-    <h2>Ryzen 5 3500X • RX 6500 XT • 16 Go • SSD + HDD</h2>
-
-    <div class="specs">
-      ✔ 1080p esport fluide<br>
-      ✔ Idéal Fortnite / Valorant<br>
-      ✔ 256 Go SSD + 500 Go HDD<br>
-      ✔ Windows 11 prêt à l’emploi
-    </div>
-
-    <div class="price-row">
-      <div class="price">400 €</div>
-      <div class="small-note">Meilleur budget</div>
-    </div>
-
-    <div class="btns">
-      <div class="btn-ligne">
-        <a class="btn btn-vinted" href="https://www.vinted.fr/items/8081960897-pc-gamer-ssd-16-go-ryzen-5-rx-6500xt-windows-11" target="_blank" rel="noopener noreferrer">Voir sur Vinted</a>
-        <a class="btn btn-leboncoin" href="https://www.leboncoin.fr/profile/4555ce52-c61b-4f81-9fb8-c66f889a5e4e/offers" target="_blank" rel="noopener noreferrer">Voir sur Leboncoin</a>
-      </div>
-      <a class="btn btn-contact" href="contact.html">Me contacter</a>
-    </div>
-  </div>
-
 </div>
 
 <footer>
@@ -530,32 +462,100 @@
 </footer>
 
 <script>
-  const gpuFilter = document.getElementById("filter-gpu");
+  const gpuFilter    = document.getElementById("filter-gpu");
   const budgetFilter = document.getElementById("filter-budget");
-  const cards = document.querySelectorAll(".card");
+  const grid         = document.getElementById("grid");
 
-  function applyFilters() {
-    const gpuValue = gpuFilter.value;
-    const budgetValue = budgetFilter.value;
+  // ── Génère le HTML d'une carte à partir d'un objet produit ──────────────
+  function renderCard(p, index) {
+    const gpuLabel = p.gpu ? `GPU: ${p.gpu.toUpperCase()}` : "";
+    const specsHtml = (p.specs || []).map(s => `✔ ${s}`).join("<br>");
+    const note = p.note || "Tests & optimisation inclus";
 
-    cards.forEach(card => {
-      const gpu = card.dataset.gpu;
-      const price = parseInt(card.dataset.price, 10);
-      let show = true;
+    return `
+    <div class="card${p.vendu ? " sold-out" : ""}"
+         data-gpu="${p.gpu || "autre"}"
+         data-price="${p.prix}"
+         style="animation-delay:${index * 0.08}s">
+      <div class="media">
+        <img src="${p.image}" alt="${p.nom}" loading="lazy"
+             onerror="this.src='couverture.png'">
+        <div class="badges">
+          ${gpuLabel ? `<span class="badge gpu">${gpuLabel}</span>` : ""}
+          ${p.vendu
+            ? `<span class="badge sold">Vendu</span>`
+            : `<span class="badge ready">Prêt à jouer</span>`}
+        </div>
+      </div>
 
-      if (gpuValue !== "all" && gpu !== gpuValue) show = false;
+      <h2>${p.nom}</h2>
 
-      if (budgetValue !== "all") {
-        const [min, max] = budgetValue.split("-").map(Number);
-        if (price < min || price > max) show = false;
-      }
+      <div class="specs">${specsHtml || "✔ PC optimisé et testé"}</div>
 
-      card.style.display = show ? "flex" : "none";
-    });
+      <div class="price-row">
+        <div class="price">${p.prix} €</div>
+        <div class="small-note">${note}</div>
+      </div>
+
+      <div class="btns">
+        <div class="btn-ligne">
+          <a class="btn btn-vinted"
+             href="${p.vinted}" target="_blank" rel="noopener noreferrer">Voir sur Vinted</a>
+          <a class="btn btn-leboncoin"
+             href="${p.leboncoin}" target="_blank" rel="noopener noreferrer">Voir sur Leboncoin</a>
+        </div>
+        <a class="btn btn-contact" href="contact.html">Me contacter</a>
+      </div>
+    </div>`;
   }
 
-  gpuFilter.addEventListener("change", applyFilters);
-  budgetFilter.addEventListener("change", applyFilters);
+  // ── Charge produits.json et affiche les cartes ───────────────────────────
+  let allProduits = [];
+
+  async function loadProduits() {
+    try {
+      const res = await fetch("produits.json?t=" + Date.now());
+      if (!res.ok) throw new Error("Fichier introuvable");
+      allProduits = await res.json();
+      renderGrid();
+    } catch {
+      grid.innerHTML = `
+        <div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--muted);">
+          Impossible de charger les annonces.<br>
+          <small>Lance le script Python puis redéploie le site.</small>
+        </div>`;
+    }
+  }
+
+  // ── Applique les filtres et re-rend ──────────────────────────────────────
+  function renderGrid() {
+    const gpuVal    = gpuFilter.value;
+    const budgetVal = budgetFilter.value;
+
+    const filtres = allProduits.filter(p => {
+      if (gpuVal !== "all" && p.gpu !== gpuVal) return false;
+      if (budgetVal !== "all") {
+        const [min, max] = budgetVal.split("-").map(Number);
+        if (p.prix < min || p.prix > max) return false;
+      }
+      return true;
+    });
+
+    if (!filtres.length) {
+      grid.innerHTML = `
+        <div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--muted);">
+          Aucun PC ne correspond à ces filtres.
+        </div>`;
+      return;
+    }
+
+    grid.innerHTML = filtres.map((p, i) => renderCard(p, i)).join("");
+  }
+
+  gpuFilter.addEventListener("change", renderGrid);
+  budgetFilter.addEventListener("change", renderGrid);
+
+  loadProduits();
 </script>
 
 </body>
