@@ -20,8 +20,11 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Installer les dépendances
-        run: pip install requests beautifulsoup4
+      - name: Installer les dépendances Python
+        run: pip install playwright beautifulsoup4
+
+      - name: Installer Chromium (Playwright)
+        run: playwright install chromium --with-deps
 
       - name: Lancer le scraper Vinted
         run: python scrape_vinted.py

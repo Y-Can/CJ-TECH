@@ -1,34 +1,20 @@
 """
-CJ Tech — Scraper Vinted (HTML public)
-Récupère les annonces du profil Vinted via la page publique et génère produits.json
-
-Usage :
-    pip install requests beautifulsoup4
-    python scrape_vinted.py
+CJ Tech — Scraper Vinted (Playwright)
+Récupère les annonces du profil Vinted via un navigateur headless et génère produits.json
 """
 
 import json
 import re
 import sys
-import requests
 from bs4 import BeautifulSoup
+from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeout
 
 # ── CONFIG ──────────────────────────────────────────────────────────────────
-VINTED_USER_ID  = "49189698"
+VINTED_USER_ID     = "49189698"
 VINTED_PROFILE_URL = f"https://www.vinted.fr/member/{VINTED_USER_ID}"
-LBC_PROFILE_URL = "https://www.leboncoin.fr/profile/4555ce52-c61b-4f81-9fb8-c66f889a5e4e/offers"
-OUTPUT_FILE     = "produits.json"
+LBC_PROFILE_URL    = "https://www.leboncoin.fr/profile/4555ce52-c61b-4f81-9fb8-c66f889a5e4e/offers"
+OUTPUT_FILE        = "produits.json"
 # ────────────────────────────────────────────────────────────────────────────
-
-HEADERS = {
-    "User-Agent": (
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-        "AppleWebKit/537.36 (KHTML, like Gecko) "
-        "Chrome/124.0.0.0 Safari/537.36"
-    ),
-    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-    "Accept-Language": "fr-FR,fr;q=0.9,en;q=0.8",
-}
 
 GPU_MAP = {
     "rx 580":     "580",
@@ -68,47 +54,51 @@ def parse_price(price_text: str) -> int:
 
 
 def fetch_vinted_items() -> list[dict]:
-    print(f"[Vinted] Requête : {VINTED_PROFILE_URL}")
-    try:
-        r = requests.get(VINTED_PROFILE_URL, headers=HEADERS, timeout=15)
-        r.raise_for_status()
-    except requests.RequestException as e:
-        print(f"[Vinted] Erreur réseau : {e}")
-        return []
+    print(f"[Vinted] Chargement de la page : {VINTED_PROFILE_URL}")
 
-    soup = BeautifulSoup(r.text, "html.parser")
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=True)
+        page = browser.new_page(
+            user_agent=(
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                "AppleWebKit/537.36 (KHTML, like Gecko) "
+                "Chrome/124.0.0.0 Safari/537.36"
+            )
+        )
+        page.goto(VINTED_PROFILE_URL, wait_until="networkidle", timeout=30000)
 
-    # Tous les conteneurs de produits (data-testid="product-item-id-XXXXXXXX")
+        try:
+            page.wait_for_selector('[data-testid^="product-item-id-"]', timeout=15000)
+        except PlaywrightTimeout:
+            print("[Vinted] Timeout : aucun produit apparu dans la page.")
+            browser.close()
+            return []
+
+        html = page.content()
+        browser.close()
+
+    soup = BeautifulSoup(html, "html.parser")
     containers = soup.find_all(
         "div",
         attrs={"data-testid": re.compile(r"^product-item-id-\d+$")}
     )
     print(f"[Vinted] {len(containers)} annonce(s) trouvée(s)")
 
-    if not containers:
-        print("[Vinted] Aucun produit dans le HTML.")
-        print("         La page est peut-être rendue uniquement côté client (JS).")
-        return []
-
     produits = []
     for container in containers:
         item_id = container["data-testid"].replace("product-item-id-", "")
 
-        # Image et titre via l'attribut alt ("titre, marque: X, état: Y, prix €")
         img_tag   = container.find("img", attrs={"data-testid": f"product-item-id-{item_id}--image--img"})
         image_url = img_tag["src"] if img_tag else ""
         alt_text  = img_tag.get("alt", "") if img_tag else ""
         titre     = alt_text.split(",")[0].strip() if alt_text else f"PC Gaming #{item_id}"
 
-        # Prix
         price_tag = container.find("p", attrs={"data-testid": f"product-item-id-{item_id}--price-text"})
         prix      = parse_price(price_tag.get_text()) if price_tag else 0
 
-        # Statut vendu
         status_tag = container.find("p", attrs={"data-testid": f"product-item-id-{item_id}--status-text"})
         vendu      = status_tag is not None and "vendu" in status_tag.get_text().lower()
 
-        # URL de l'annonce
         link_tag    = container.find("a", attrs={"data-testid": f"product-item-id-{item_id}--overlay-link"})
         url_annonce = (
             f"https://www.vinted.fr{link_tag['href']}"
@@ -116,7 +106,7 @@ def fetch_vinted_items() -> list[dict]:
             else f"https://www.vinted.fr/items/{item_id}"
         )
 
-        produit = {
+        produits.append({
             "id":        int(item_id),
             "nom":       titre,
             "gpu":       detect_gpu(titre),
@@ -128,21 +118,20 @@ def fetch_vinted_items() -> list[dict]:
             "leboncoin": LBC_PROFILE_URL,
             "vendu":     vendu,
             "source":    "vinted-html",
-        }
-        produits.append(produit)
+        })
 
     return produits
 
 
 def main():
     print("=" * 50)
-    print("  CJ Tech — Scraper Vinted (HTML)")
+    print("  CJ Tech — Scraper Vinted")
     print("=" * 50)
 
     produits = fetch_vinted_items()
 
     if not produits:
-        print("\nAucun produit récupéré. Vérifie ta connexion ou l'URL du profil.")
+        print("\nAucun produit récupéré.")
         sys.exit(1)
 
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
@@ -152,7 +141,6 @@ def main():
     vendu = sum(1 for p in produits if p["vendu"])
     print(f"\n[OK] {OUTPUT_FILE} mis à jour :")
     print(f"     {dispo} disponible(s) — {vendu} vendu(s)")
-    print("\nProchaine étape : push sur GitHub pour redéployer le site.")
 
 
 if __name__ == "__main__":
