@@ -2,10 +2,10 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <title>CJ Tech - PC Gaming prêts à jouer</title>
+  <title>CJ Tech - PC Gaming & Composants</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
-  <meta name="description" content="CJ Tech (cjtech) - PC Gaming testés, optimisés et prêts à jouer. Achat sécurisé via Vinted et Leboncoin.">
+  <meta name="description" content="CJ Tech (cjtech) - PC Gaming et composants testés, optimisés et prêts à l'emploi. Achat sécurisé via Vinted et Leboncoin.">
   <meta name="keywords" content="CJ Tech, cjtech, cj tech pc, cjtech pc gaming, pc gamer cjtech">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -282,7 +282,11 @@
     }
     .badge.gpu{ background: rgba(0,212,255,.92); }
     .badge.ready{ background: rgba(0,255,156,.88); }
+    .badge.available{ background: rgba(99,202,255,.88); }
     .badge.sold{ background: rgba(255,60,60,.90); color:#fff; }
+    .badge.cat-composant{ background: rgba(245,158,11,.92); color:#1a0d00; }
+    .badge.cat-peripherique{ background: rgba(192,132,252,.92); color:#1a0020; }
+    .badge.cat-autre{ background: rgba(148,163,184,.80); color:#111; }
 
     /* Card vendue : grisée + non cliquable */
     .card.sold-out{
@@ -389,6 +393,96 @@
       color:#eaf7ff;
     }
 
+    /* ===== CATEGORY TABS ===== */
+    .cat-tabs{
+      max-width: 1100px;
+      margin: 22px auto 0;
+      padding: 0 20px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .cat-tab{
+      padding: 9px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(22,26,43,.60);
+      color: var(--muted);
+      cursor: pointer;
+      font-family: 'Inter', Arial, sans-serif;
+      font-weight: 700;
+      font-size: .9rem;
+      transition: all .15s ease;
+    }
+    .cat-tab:hover{
+      border-color: rgba(0,212,255,.35);
+      color: #fff;
+    }
+    .cat-tab.active{
+      background: rgba(0,212,255,.16);
+      border-color: rgba(0,212,255,.55);
+      color: var(--cyan);
+    }
+    .cat-tab .count{
+      opacity: .65;
+      font-weight: 500;
+      font-size: .82rem;
+      margin-left: 3px;
+    }
+    .cat-tab.hidden-tab{ display: none; }
+
+    /* ===== AVIS ===== */
+    .avis-section{
+      max-width: 1100px;
+      margin: 0 auto 52px;
+      padding: 0 20px;
+    }
+    .avis-section h2{
+      font-size: 1.45rem;
+      font-weight: 900;
+      margin: 0 0 18px;
+      color: #eaf7ff;
+    }
+    .avis-section h2 span{ color: var(--cyan); }
+
+    .avis-grid{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .avis-card{
+      background: linear-gradient(160deg, rgba(22,26,43,.95), rgba(22,26,43,.80));
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      animation: cardIn .45s ease-out both;
+    }
+    .avis-stars{ color: #fbbf24; font-size: 1.1rem; letter-spacing: 2px; }
+    .avis-comment{
+      font-size: .97rem;
+      line-height: 1.55;
+      color: #dde6f0;
+      font-style: italic;
+    }
+    .avis-article{
+      font-size: .82rem;
+      color: var(--cyan);
+      opacity: .85;
+    }
+    .avis-meta{
+      font-size: .8rem;
+      color: rgba(205,211,224,.6);
+      margin-top: auto;
+    }
+    .avis-empty{
+      color: var(--muted);
+      font-size: .95rem;
+      padding: 20px 0;
+    }
+
     footer{
       text-align:center;
       padding: 26px 16px;
@@ -429,7 +523,15 @@
 </nav>
 
 <div class="trust-bar">
-  ✅ <b>PC testés</b> • ⚙️ <b>Optimisés</b> • 🛡️ Achat sécurisé via <b>Vinted</b> ou <b>Leboncoin</b> • 💬 Support disponible
+  ✅ <b>PC testés & optimisés</b> • 🔧 <b>Composants vérifiés</b> • 🛡️ Achat sécurisé via <b>Vinted</b> ou <b>Leboncoin</b> • 💬 Support disponible
+</div>
+
+<div class="cat-tabs" id="cat-tabs" role="tablist">
+  <button class="cat-tab active" data-cat="all" type="button">Tout <span class="count"></span></button>
+  <button class="cat-tab" data-cat="pc" type="button">PC Gaming <span class="count"></span></button>
+  <button class="cat-tab" data-cat="composant" type="button">Composants <span class="count"></span></button>
+  <button class="cat-tab" data-cat="peripherique" type="button">Périphériques <span class="count"></span></button>
+  <button class="cat-tab" data-cat="autre" type="button">Autres <span class="count"></span></button>
 </div>
 
 <div class="filters" id="pcs">
@@ -457,6 +559,13 @@
   </div>
 </div>
 
+<section class="avis-section" id="avis">
+  <h2>Ce que disent nos <span>acheteurs</span></h2>
+  <div class="avis-grid" id="avis-grid">
+    <p class="avis-empty">Chargement des avis…</p>
+  </div>
+</section>
+
 <footer>
   © 2026 - CJ Tech • PC Gaming testés, optimisés et prêts à jouer
 </footer>
@@ -465,32 +574,87 @@
   const gpuFilter    = document.getElementById("filter-gpu");
   const budgetFilter = document.getElementById("filter-budget");
   const grid         = document.getElementById("grid");
+  let allProduits    = [];
+  let activeCat      = "all";
 
-  // ── Génère le HTML d'une carte à partir d'un objet produit ──────────────
+  // ── Onglets catégorie ────────────────────────────────────────────────────
+  document.querySelectorAll(".cat-tab").forEach(tab => {
+    tab.addEventListener("click", () => {
+      document.querySelectorAll(".cat-tab").forEach(t => t.classList.remove("active"));
+      tab.classList.add("active");
+      activeCat = tab.dataset.cat;
+      // Masquer le filtre GPU pour les catégories sans GPU
+      gpuFilter.style.display =
+        (activeCat === "all" || activeCat === "pc") ? "" : "none";
+      renderGrid();
+    });
+  });
+
+  function updateTabCounts() {
+    const counts = { all: allProduits.length, pc: 0, composant: 0, peripherique: 0, autre: 0 };
+    allProduits.forEach(p => {
+      const cat = p.categorie || "pc";
+      if (counts[cat] !== undefined) counts[cat]++;
+    });
+    document.querySelectorAll(".cat-tab").forEach(tab => {
+      const cat = tab.dataset.cat;
+      const n   = counts[cat] ?? 0;
+      const countEl = tab.querySelector(".count");
+      if (countEl) countEl.textContent = `(${n})`;
+      if (cat !== "all") {
+        tab.classList.toggle("hidden-tab", n === 0);
+      }
+    });
+  }
+
+  // ── Génère le HTML d'une carte ───────────────────────────────────────────
   function renderCard(p, index) {
-    const gpuLabel = p.gpu ? `GPU: ${p.gpu.toUpperCase()}` : "";
-    const specsHtml = (p.specs || []).map(s => `✔ ${s}`).join("<br>");
-    const note = p.note || "Tests & optimisation inclus";
+    const cat = p.categorie || "pc";
+
+    // Badge principal selon catégorie
+    let mainBadge = "";
+    if (cat === "pc") {
+      if (p.gpu && p.gpu !== "autre") {
+        mainBadge = `<span class="badge gpu">GPU: ${p.gpu.toUpperCase()}</span>`;
+      }
+    } else if (cat === "composant") {
+      mainBadge = `<span class="badge cat-composant">Composant</span>`;
+    } else if (cat === "peripherique") {
+      mainBadge = `<span class="badge cat-peripherique">Périphérique</span>`;
+    } else {
+      mainBadge = `<span class="badge cat-autre">Autre</span>`;
+    }
+
+    // Badge statut
+    const statusBadge = p.vendu
+      ? `<span class="badge sold">Vendu</span>`
+      : (cat === "pc"
+          ? `<span class="badge ready">Prêt à jouer</span>`
+          : `<span class="badge available">Disponible</span>`);
+
+    const specsHtml   = (p.specs || []).map(s => `✔ ${s}`).join("<br>");
+    const defaultNote = cat === "pc" ? "Tests & optimisation inclus" : "Testé et vérifié";
+    const note        = p.note || defaultNote;
+    const defaultSpec = cat === "pc" ? "✔ PC optimisé et testé" : "✔ Article vérifié";
 
     return `
     <div class="card${p.vendu ? " sold-out" : ""}"
          data-gpu="${p.gpu || "autre"}"
          data-price="${p.prix}"
+         data-cat="${cat}"
          style="animation-delay:${index * 0.08}s">
       <div class="media">
         <img src="${p.image}" alt="${p.nom}" loading="lazy"
              onerror="this.src='couverture.png'">
         <div class="badges">
-          ${gpuLabel ? `<span class="badge gpu">${gpuLabel}</span>` : ""}
-          ${p.vendu
-            ? `<span class="badge sold">Vendu</span>`
-            : `<span class="badge ready">Prêt à jouer</span>`}
+          ${mainBadge}
+          ${statusBadge}
         </div>
       </div>
 
       <h2>${p.nom}</h2>
 
-      <div class="specs">${specsHtml || "✔ PC optimisé et testé"}</div>
+      <div class="specs">${specsHtml || defaultSpec}</div>
 
       <div class="price-row">
         <div class="price">${p.prix} €</div>
@@ -509,30 +673,14 @@
     </div>`;
   }
 
-  // ── Charge produits.json et affiche les cartes ───────────────────────────
-  let allProduits = [];
-
-  async function loadProduits() {
-    try {
-      const res = await fetch("produits.json?t=" + Date.now());
-      if (!res.ok) throw new Error("Fichier introuvable");
-      allProduits = await res.json();
-      renderGrid();
-    } catch {
-      grid.innerHTML = `
-        <div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--muted);">
-          Impossible de charger les annonces.<br>
-          <small>Lance le script Python puis redéploie le site.</small>
-        </div>`;
-    }
-  }
-
   // ── Applique les filtres et re-rend ──────────────────────────────────────
   function renderGrid() {
     const gpuVal    = gpuFilter.value;
     const budgetVal = budgetFilter.value;
 
     const filtres = allProduits.filter(p => {
+      const cat = p.categorie || "pc";
+      if (activeCat !== "all" && cat !== activeCat) return false;
       if (gpuVal !== "all" && p.gpu !== gpuVal) return false;
       if (budgetVal !== "all") {
         const [min, max] = budgetVal.split("-").map(Number);
@@ -544,7 +692,7 @@
     if (!filtres.length) {
       grid.innerHTML = `
         <div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--muted);">
-          Aucun PC ne correspond à ces filtres.
+          Aucun article ne correspond à ces filtres.
         </div>`;
       return;
     }
@@ -552,10 +700,68 @@
     grid.innerHTML = filtres.map((p, i) => renderCard(p, i)).join("");
   }
 
+  // ── Charge produits.json et affiche les cartes ───────────────────────────
+  async function loadProduits() {
+    try {
+      const res = await fetch("produits.json?t=" + Date.now());
+      if (!res.ok) throw new Error("Fichier introuvable");
+      allProduits = await res.json();
+      updateTabCounts();
+      renderGrid();
+    } catch {
+      grid.innerHTML = `
+        <div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--muted);">
+          Impossible de charger les annonces.<br>
+          <small>Lance le script Python puis redéploie le site.</small>
+        </div>`;
+    }
+  }
+
   gpuFilter.addEventListener("change", renderGrid);
   budgetFilter.addEventListener("change", renderGrid);
 
   loadProduits();
+
+  // ── Avis clients ──────────────────────────────────────────────────────────
+  function starsHtml(note) {
+    const n = Math.round(Math.max(1, Math.min(5, note)));
+    return "★".repeat(n) + "☆".repeat(5 - n);
+  }
+
+  function formatDate(dateStr) {
+    if (!dateStr) return "";
+    const d = new Date(dateStr);
+    return isNaN(d) ? dateStr : d.toLocaleDateString("fr-FR", { year: "numeric", month: "short" });
+  }
+
+  async function loadAvis() {
+    const avisGrid = document.getElementById("avis-grid");
+    const section  = document.getElementById("avis");
+    if (!avisGrid) return;
+
+    try {
+      const res  = await fetch("avis.json?t=" + Date.now());
+      if (!res.ok) throw new Error();
+      const avis = await res.json();
+
+      if (!avis.length) {
+        section.style.display = "none";   // Masquer si vide
+        return;
+      }
+
+      avisGrid.innerHTML = avis.map((a, i) => `
+        <div class="avis-card" style="animation-delay:${i * 0.07}s">
+          <div class="avis-stars">${starsHtml(a.note)}</div>
+          <p class="avis-comment">"${a.commentaire || "Très satisfait !"}"</p>
+          ${a.article ? `<div class="avis-article">🖥️ ${a.article}</div>` : ""}
+          <div class="avis-meta">— ${a.acheteur}${a.date ? " · " + formatDate(a.date) : ""}</div>
+        </div>`).join("");
+    } catch {
+      section.style.display = "none";   // Masquer si fichier absent/vide
+    }
+  }
+
+  loadAvis();
 </script>
 
 </body>

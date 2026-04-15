@@ -2,6 +2,7 @@
   {
     "id": 8648648232,
     "nom": "Processeur Ryzen 5 3500x Neuf Jamais déballer",
+    "categorie": "composant",
     "gpu": "autre",
     "prix": 60,
     "image": "https://images1.vinted.net/t/05_0108e_KRjeNHc8w25n162VtW3cxj8D/310x430/1776153423.webp?s=36c19dbc407face09e13a24002345b30882c06f6",
@@ -15,6 +16,7 @@
   {
     "id": 8530637648,
     "nom": "pc gamer rx 580 8go 16gb ram ssd +200 fps fortnite",
+    "categorie": "pc",
     "gpu": "580",
     "prix": 400,
     "image": "https://images1.vinted.net/t/06_02372_DgDf9Z6qZ17w9i9WA8FxCeBB/310x430/1774950866.webp?s=9990ae556beeb3eb46aeac32dbfdc51f57fefa78",
@@ -28,6 +30,7 @@
   {
     "id": 8463242241,
     "nom": "pc gamer ryzen 5 + rx 580 8go 16gb ram ssd fortnite 200fps",
+    "categorie": "pc",
     "gpu": "580",
     "prix": 400,
     "image": "https://images1.vinted.net/t/01_01daf_hsqB61BpL3MdnJFUyXu1QCKU/310x430/1774254251.webp?s=e35acba1e8c04fbb6c4b5e25640b82e649f9823a",
@@ -41,6 +44,7 @@
   {
     "id": 8408001002,
     "nom": "PC Gaming Ryzen 5 / 16GB Ram / SSD Nvme / RGB / Fortnite / GTA / Warzone",
+    "categorie": "pc",
     "gpu": "autre",
     "prix": 350,
     "image": "https://images1.vinted.net/t/06_007f7_JSQ4ZV8Nkw63xZdRG6nMruvf/310x430/1773654933.webp?s=a29b03b12be1e56048781f6e4e92e9db05e0e280",
@@ -54,6 +58,7 @@
   {
     "id": 8270460854,
     "nom": "Pc gamer ryzen 5 rx 5700 xt",
+    "categorie": "pc",
     "gpu": "5700xt",
     "prix": 500,
     "image": "https://images1.vinted.net/t/06_003ef_PfwZeVFuUBjHt3F1Pt7qBtvG/310x430/1772183722.webp?s=d5a49f6b17af45e8f480119f67ecb74e5e5fc62c",
@@ -67,6 +72,7 @@
   {
     "id": 8262112078,
     "nom": "Pc gamer ryzen 5 xt 5700 xt Windows 11 pro",
+    "categorie": "pc",
     "gpu": "5700xt",
     "prix": 500,
     "image": "https://images1.vinted.net/t/04_025f5_KG1mNpBauQS6uWBf8qGrydsA/310x430/1772053346.webp?s=b7313c408add08d68b1f16a34c88fe755e5d77ce",
@@ -80,9 +86,10 @@
   {
     "id": 8108143942,
     "nom": "PC Gamer SSD - Ryzen 5 - 1660 TI  +200fps",
+    "categorie": "pc",
     "gpu": "1660ti",
     "prix": 500,
-    "image": "https://images1.vinted.net/t/04_011a7_Jv7wgUQVjzbghNRdoNjFotwh/310x430/1770317439.webp?s=1a9a96375372a7eef1fb5bb49765ee71f9db9552",
+    "image": "https://images1.vinted.net/t/04_011a7_Jv7wgUQVjzbghNRdoNjFotwh/310x430/1770317439.webp?s=a29b03b12be1e56048781f6e4e92e9db05e0e552",
     "specs": [],
     "note": "",
     "vinted": "https://www.vinted.fr/items/8108143942",
@@ -93,6 +100,7 @@
   {
     "id": 8019135274,
     "nom": "PC Gamer SSD - Ryzen 5 - RX 5700XT",
+    "categorie": "pc",
     "gpu": "5700xt",
     "prix": 499,
     "image": "https://images1.vinted.net/t/03_00354_LbYM8VNRCxkCz7xkdEJcAXHq/310x430/1769292500.webp?s=1d98714047b49517558d51cc952a2a6ab868079b",
