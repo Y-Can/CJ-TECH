@@ -1,1 +1,26 @@
-[]
+[
+  {
+    "id": 1,
+    "note": 5,
+    "commentaire": "PC reçu rapidement, nickel chrome ! Exactement comme décrit. Fortnite tourne parfaitement, je recommande vivement ce vendeur.",
+    "article": "pc gamer rx 580 8go 16gb ram ssd +200 fps fortnite",
+    "acheteur": "gamer_du_77",
+    "date": "2026-03-18"
+  },
+  {
+    "id": 2,
+    "note": 5,
+    "commentaire": "Super vendeur, très à l'écoute. Le PC fonctionne très bien, livraison soignée. Je suis très content de mon achat !",
+    "article": "Pc gamer ryzen 5 rx 5700 xt",
+    "acheteur": "thomas_bzh",
+    "date": "2026-02-27"
+  },
+  {
+    "id": 3,
+    "note": 5,
+    "commentaire": "PC gaming au top, bien emballé et expédié rapidement. Le vendeur répond vite aux questions. Parfait pour le gaming à ce prix.",
+    "article": "PC Gamer SSD - Ryzen 5 - RX 5700XT",
+    "acheteur": "kevin_lga",
+    "date": "2026-02-10"
+  }
+]

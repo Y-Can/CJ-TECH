@@ -745,7 +745,7 @@
       const avis = await res.json();
 
       if (!avis.length) {
-        section.style.display = "none";   // Masquer si vide
+        avisGrid.innerHTML = `<p class="avis-empty">Aucun avis client pour le moment.</p>`;
         return;
       }
 
@@ -757,7 +757,7 @@
           <div class="avis-meta">— ${a.acheteur}${a.date ? " · " + formatDate(a.date) : ""}</div>
         </div>`).join("");
     } catch {
-      section.style.display = "none";   // Masquer si fichier absent/vide
+      avisGrid.innerHTML = `<p class="avis-empty">Les avis seront disponibles après le premier scraping.</p>`;
     }
   }
 
