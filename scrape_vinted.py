@@ -1,24 +1,23 @@
 """
-CJ Tech — Scraper Vinted
-Récupère les annonces du profil Vinted et génère produits.json
+CJ Tech — Scraper Vinted (HTML public)
+Récupère les annonces du profil Vinted via la page publique et génère produits.json
 
 Usage :
-    pip install requests
+    pip install requests beautifulsoup4
     python scrape_vinted.py
-
-Le fichier produits.json est mis à jour automatiquement.
 """
 
 import json
+import re
 import sys
-import time
 import requests
+from bs4 import BeautifulSoup
 
 # ── CONFIG ──────────────────────────────────────────────────────────────────
-VINTED_USER_ID  = "49189698"          # ton ID Vinted (visible dans l'URL du profil)
+VINTED_USER_ID  = "49189698"
+VINTED_PROFILE_URL = f"https://www.vinted.fr/member/{VINTED_USER_ID}"
 LBC_PROFILE_URL = "https://www.leboncoin.fr/profile/4555ce52-c61b-4f81-9fb8-c66f889a5e4e/offers"
 OUTPUT_FILE     = "produits.json"
-PER_PAGE        = 20                  # annonces à récupérer
 # ────────────────────────────────────────────────────────────────────────────
 
 HEADERS = {
@@ -27,28 +26,30 @@ HEADERS = {
         "AppleWebKit/537.36 (KHTML, like Gecko) "
         "Chrome/124.0.0.0 Safari/537.36"
     ),
-    "Accept": "application/json, text/plain, */*",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
     "Accept-Language": "fr-FR,fr;q=0.9,en;q=0.8",
-    "Referer": f"https://www.vinted.fr/member/{VINTED_USER_ID}",
-    "Origin": "https://www.vinted.fr",
 }
 
-# Catégories GPU reconnues (pour le filtre du site)
 GPU_MAP = {
-    "rx 580":    "580",
-    "rx580":     "580",
-    "rx 5700 xt":"5700xt",
-    "rx5700xt":  "5700xt",
-    "rx 6500 xt":"6500xt",
-    "rx6500xt":  "6500xt",
-    "rtx 3060":  "3060",
-    "rtx 3070":  "3070",
-    "rtx 3080":  "3080",
-    "rtx 4060":  "4060",
-    "gtx 1660":  "1660",
-    "1660 ti":   "1660ti",
-    "1660 super":"1660super",
+    "rx 580":     "580",
+    "rx580":      "580",
+    "rx 5700 xt": "5700xt",
+    "rx5700xt":   "5700xt",
+    "5700 xt":    "5700xt",
+    "5700xt":     "5700xt",
+    "rx 6500 xt": "6500xt",
+    "rx6500xt":   "6500xt",
+    "6500 xt":    "6500xt",
+    "6500xt":     "6500xt",
+    "rtx 3060":   "3060",
+    "rtx 3070":   "3070",
+    "rtx 3080":   "3080",
+    "rtx 4060":   "4060",
+    "gtx 1660":   "1660",
+    "1660 ti":    "1660ti",
+    "1660 super": "1660super",
 }
+
 
 def detect_gpu(text: str) -> str:
     text_lower = text.lower()
@@ -58,97 +59,90 @@ def detect_gpu(text: str) -> str:
     return "autre"
 
 
-def fetch_vinted_items() -> list[dict]:
-    url = (
-        f"https://www.vinted.fr/api/v2/users/{VINTED_USER_ID}/items"
-        f"?page=1&per_page={PER_PAGE}&order=relevance"
-    )
-    print(f"[Vinted] Requête : {url}")
-
+def parse_price(price_text: str) -> int:
+    cleaned = price_text.replace("\xa0", "").replace("€", "").replace(",", ".").strip()
     try:
-        r = requests.get(url, headers=HEADERS, timeout=15)
+        return int(float(cleaned))
+    except ValueError:
+        return 0
+
+
+def fetch_vinted_items() -> list[dict]:
+    print(f"[Vinted] Requête : {VINTED_PROFILE_URL}")
+    try:
+        r = requests.get(VINTED_PROFILE_URL, headers=HEADERS, timeout=15)
         r.raise_for_status()
-    except requests.HTTPError as e:
-        print(f"[Vinted] Erreur HTTP {r.status_code} : {e}")
-        if r.status_code == 401:
-            print("  → L'API demande une authentification.")
-            print("  → Lance le script avec cookies (voir README) ou utilise le mode manuel.")
-        return []
     except requests.RequestException as e:
         print(f"[Vinted] Erreur réseau : {e}")
         return []
 
-    data = r.json()
-    raw_items = data.get("items", [])
-    print(f"[Vinted] {len(raw_items)} annonce(s) trouvée(s)")
+    soup = BeautifulSoup(r.text, "html.parser")
+
+    # Tous les conteneurs de produits (data-testid="product-item-id-XXXXXXXX")
+    containers = soup.find_all(
+        "div",
+        attrs={"data-testid": re.compile(r"^product-item-id-\d+$")}
+    )
+    print(f"[Vinted] {len(containers)} annonce(s) trouvée(s)")
+
+    if not containers:
+        print("[Vinted] Aucun produit dans le HTML.")
+        print("         La page est peut-être rendue uniquement côté client (JS).")
+        return []
 
     produits = []
-    for item in raw_items:
+    for container in containers:
+        item_id = container["data-testid"].replace("product-item-id-", "")
+
+        # Image et titre via l'attribut alt ("titre, marque: X, état: Y, prix €")
+        img_tag   = container.find("img", attrs={"data-testid": f"product-item-id-{item_id}--image--img"})
+        image_url = img_tag["src"] if img_tag else ""
+        alt_text  = img_tag.get("alt", "") if img_tag else ""
+        titre     = alt_text.split(",")[0].strip() if alt_text else f"PC Gaming #{item_id}"
+
         # Prix
-        price_obj = item.get("price", {})
-        prix = float(price_obj.get("amount", 0))
-
-        # Photos
-        photos = item.get("photos", [])
-        image_url = ""
-        if photos:
-            image_url = photos[0].get("url", photos[0].get("full_size_url", ""))
-
-        # Titre + description
-        titre      = item.get("title", "")
-        description = item.get("description", "")
-        texte_complet = f"{titre} {description}"
+        price_tag = container.find("p", attrs={"data-testid": f"product-item-id-{item_id}--price-text"})
+        prix      = parse_price(price_tag.get_text()) if price_tag else 0
 
         # Statut vendu
-        status = item.get("status", "")
-        vendu  = status in ("sold_out", "hidden", "reserved")
+        status_tag = container.find("p", attrs={"data-testid": f"product-item-id-{item_id}--status-text"})
+        vendu      = status_tag is not None and "vendu" in status_tag.get_text().lower()
 
-        # URL annonce
-        url_annonce = item.get("url", f"https://www.vinted.fr/items/{item.get('id', '')}")
+        # URL de l'annonce
+        link_tag    = container.find("a", attrs={"data-testid": f"product-item-id-{item_id}--overlay-link"})
+        url_annonce = (
+            f"https://www.vinted.fr{link_tag['href']}"
+            if link_tag
+            else f"https://www.vinted.fr/items/{item_id}"
+        )
 
         produit = {
-            "id":          item.get("id"),
-            "nom":         titre,
-            "gpu":         detect_gpu(texte_complet),
-            "prix":        int(prix),
-            "image":       image_url,
-            "specs":       [],          # à remplir manuellement ou via description
-            "note":        "",          # ex : "Silencieux & stable"
-            "vinted":      url_annonce,
-            "leboncoin":   LBC_PROFILE_URL,
-            "vendu":       vendu,
-            "source":      "vinted",
+            "id":        int(item_id),
+            "nom":       titre,
+            "gpu":       detect_gpu(titre),
+            "prix":      prix,
+            "image":     image_url,
+            "specs":     [],
+            "note":      "",
+            "vinted":    url_annonce,
+            "leboncoin": LBC_PROFILE_URL,
+            "vendu":     vendu,
+            "source":    "vinted-html",
         }
-
-        # Extraire des specs basiques depuis la description
-        specs = []
-        desc_lower = description.lower()
-        if "ssd" in desc_lower:
-            specs.append("SSD inclus")
-        if "windows 11" in desc_lower or "win 11" in desc_lower:
-            specs.append("Windows 11 prêt à l'emploi")
-        if "nvme" in desc_lower:
-            specs.append("SSD NVMe")
-        if "16 go" in desc_lower or "16go" in desc_lower:
-            specs.append("16 Go RAM")
-        if specs:
-            produit["specs"] = specs
-
         produits.append(produit)
-        time.sleep(0.3)   # petit délai poli
 
     return produits
 
 
 def main():
     print("=" * 50)
-    print("  CJ Tech — Scraper Vinted")
+    print("  CJ Tech — Scraper Vinted (HTML)")
     print("=" * 50)
 
     produits = fetch_vinted_items()
 
     if not produits:
-        print("\nAucun produit récupéré. Vérifie ta connexion ou les cookies.")
+        print("\nAucun produit récupéré. Vérifie ta connexion ou l'URL du profil.")
         sys.exit(1)
 
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
@@ -158,7 +152,7 @@ def main():
     vendu = sum(1 for p in produits if p["vendu"])
     print(f"\n[OK] {OUTPUT_FILE} mis à jour :")
     print(f"     {dispo} disponible(s) — {vendu} vendu(s)")
-    print("\nProchaine étape : déploie ton site pour mettre les annonces à jour.")
+    print("\nProchaine étape : push sur GitHub pour redéployer le site.")
 
 
 if __name__ == "__main__":
