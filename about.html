@@ -2,307 +2,229 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>À propos - CJ Tech</title>
+  <title>À propos — CJ-TECH.FR</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="CJ Tech — Qui sommes-nous ? PC Gaming montés, testés et optimisés.">
-
-  <!-- Open Graph -->
+  <meta name="description" content="CJ-TECH.FR — Qui sommes-nous ? PC Gaming reconditionnés et services IT à Valenciennes.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="À propos - CJ Tech">
-  <meta property="og:description" content="PC Gaming montés, testés et optimisés. Découvrez notre processus.">
+  <meta property="og:title" content="À propos — CJ-TECH.FR">
   <meta property="og:image" content="couverture.png">
   <meta property="og:locale" content="fr_FR">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
-
   <style>
     :root{
-      --bg:#0f1220;
-      --panel:#161a2b;
-      --text:#ffffff;
-      --muted:#cdd3e0;
-      --cyan:#00d4ff;
-      --green:#00ff9c;
-      --radius:16px;
-      --shadow: 0 10px 30px rgba(0,0,0,.45);
-      --shadowSoft: 0 6px 20px rgba(0,0,0,.35);
+      --bg:#0d0f14;--panel:#141720;--border:rgba(255,255,255,.07);
+      --text:#fff;--muted:#8a94a8;--accent:#e63e3e;--blue:#1d4ed8;
+      --radius:14px;
     }
-    *{ box-sizing:border-box; }
-    body{
-      margin:0;
-      font-family: 'Inter', Arial, sans-serif;
-      background: radial-gradient(1200px 600px at 20% 0%, rgba(0,212,255,.08), transparent 60%),
-                  radial-gradient(900px 500px at 80% 10%, rgba(0,255,156,.06), transparent 60%),
-                  var(--bg);
-      color:var(--text);
-      scroll-behavior:smooth;
-    }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
 
-    /* ===== HEADER ===== */
-    header{
-      position:relative;
-      height: 220px;
-      background: url("couverture.png") center center / cover no-repeat;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      overflow:hidden;
-      border-bottom: 1px solid rgba(255,255,255,.06);
-    }
-    header::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background: linear-gradient(180deg, rgba(0,0,0,.5), rgba(15,18,32,.92));
-    }
-    .header-content{
-      position:relative;
-      z-index:1;
-      animation: fadeIn .8s ease-out;
-    }
-    .header-content h1{
-      margin:0;
-      font-size:2.4rem;
-      font-weight:900;
-      text-shadow: 0 4px 18px rgba(0,0,0,.75);
-    }
-    .logo-cj{ color:var(--cyan); }
-    .header-content p{
-      margin:8px 0 0;
-      font-size:1rem;
-      color:#dce8f0;
-      opacity:.9;
-    }
+    /* TOP BAR */
+    .top-bar{background:#080a0e;color:#8a94a8;font-size:.82rem;padding:7px 24px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,.04);}
+    .top-bar a{color:#c8d3e8;text-decoration:none;}
+    .top-bar a:hover{color:#fff;}
+    .top-bar .ci{display:flex;gap:20px;flex-wrap:wrap;}
 
-    @keyframes fadeIn{
-      from{ opacity:0; transform:translateY(8px); }
-      to{ opacity:1; transform:translateY(0); }
-    }
+    /* HEADER */
+    .page-header{background:linear-gradient(135deg,#0d0f14,#141720);padding:44px 24px 36px;text-align:center;position:relative;overflow:hidden;border-bottom:1px solid rgba(255,255,255,.06);}
+    .page-header::before{content:"";position:absolute;inset:0;background:radial-gradient(600px 300px at 50% 50%,rgba(230,62,62,.07),transparent 60%);pointer-events:none;}
+    .header-logo{position:relative;font-size:2.4rem;font-weight:900;letter-spacing:-1px;margin-bottom:6px;}
+    .header-logo .cj{color:#e63e3e;}
+    .header-logo .fr{color:#8a94a8;font-weight:600;font-size:1.8rem;}
+    .page-header p{position:relative;color:#8a94a8;font-size:.97rem;}
 
-    /* ===== NAV ===== */
-    nav{
-      position:sticky;
-      top:0;
-      z-index:10;
-      background:rgba(11,14,26,.8);
-      backdrop-filter:blur(10px);
-      border-bottom:1px solid rgba(255,255,255,.06);
-      text-align:center;
-      padding:12px 10px;
-    }
-    nav a{
-      color:var(--cyan);
-      margin:0 12px;
-      text-decoration:none;
-      font-weight:900;
-      opacity:.9;
-    }
-    nav a:hover{ opacity:1; text-decoration:underline; }
+    /* NAV */
+    nav{position:sticky;top:0;z-index:100;background:rgba(8,10,14,.94);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;gap:4px;padding:0 20px;height:52px;flex-wrap:wrap;}
+    .nav-link{display:inline-flex;align-items:center;gap:5px;padding:7px 16px;border-radius:999px;color:#8a94a8;font-weight:600;font-size:.87rem;text-decoration:none;transition:all .15s;white-space:nowrap;}
+    .nav-link:hover{color:#fff;background:rgba(255,255,255,.07);}
+    .nav-sep{color:rgba(255,255,255,.15);padding:0 2px;}
+    .nav-phone{margin-left:auto;font-size:.82rem;font-weight:600;white-space:nowrap;}
+    .nav-phone a{color:#c8d3e8;text-decoration:none;}
+    .nav-phone a:hover{color:#fff;}
 
-    /* ===== CONTENT ===== */
-    .content{
-      max-width:820px;
-      margin:48px auto;
-      padding:0 20px 60px;
-      animation: fadeIn .7s ease-out .1s both;
-    }
+    /* CONTENT */
+    .content{max-width:860px;margin:0 auto;padding:52px 24px 72px;}
 
-    .section-title{
-      font-size:1.7rem;
-      font-weight:900;
-      color:var(--cyan);
-      margin:0 0 20px;
-    }
+    /* TEXT */
+    .sec-title{font-size:1.5rem;font-weight:900;color:#fff;margin-bottom:8px;}
+    .sec-title span{color:#e63e3e;}
+    .intro{font-size:.97rem;line-height:1.75;color:var(--muted);margin-bottom:40px;}
+    .intro b{color:#fff;}
 
-    .intro-text{
-      font-size:1.08rem;
-      line-height:1.75;
-      color:var(--muted);
-      margin-bottom:36px;
-    }
-    .intro-text b{ color:#fff; }
+    /* DUAL ACTIVITY */
+    .dual-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:48px;}
+    .activity-card{border-radius:16px;padding:28px 24px;}
+    .act-gaming{background:linear-gradient(145deg,rgba(230,62,62,.12),rgba(20,23,32,.8));border:1px solid rgba(230,62,62,.2);}
+    .act-pro{background:linear-gradient(145deg,rgba(29,78,216,.1),rgba(20,23,32,.8));border:1px solid rgba(29,78,216,.2);}
+    .activity-card h3{font-size:1.05rem;font-weight:900;margin-bottom:10px;}
+    .act-gaming h3{color:#ff6b6b;}
+    .act-pro h3{color:#60a5fa;}
+    .activity-card p{font-size:.9rem;color:var(--muted);line-height:1.65;}
+    .activity-card ul{list-style:none;margin-top:12px;}
+    .activity-card ul li{font-size:.88rem;color:var(--muted);padding:5px 0;display:flex;align-items:center;gap:7px;}
+    .act-gaming ul li::before{content:"✓";color:#ff6b6b;font-weight:900;}
+    .act-pro ul li::before{content:"✓";color:#60a5fa;font-weight:900;}
 
-    /* ===== PROCESS STEPS ===== */
-    .steps{
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap:16px;
-      margin:28px 0 48px;
-    }
-    .step{
-      background:linear-gradient(160deg, rgba(22,26,43,.95), rgba(22,26,43,.8));
-      border:1px solid rgba(255,255,255,.07);
-      border-radius:var(--radius);
-      padding:22px 18px;
-      text-align:center;
-      box-shadow:var(--shadowSoft);
-      transition:transform .18s ease, border-color .18s ease;
-    }
-    .step:hover{
-      transform:translateY(-4px);
-      border-color:rgba(0,212,255,.22);
-    }
-    .step-icon{
-      font-size:2rem;
-      margin-bottom:10px;
-    }
-    .step h3{
-      margin:0 0 8px;
-      font-size:1rem;
-      font-weight:900;
-      color:#eaf7ff;
-    }
-    .step p{
-      margin:0;
-      font-size:.88rem;
-      color:var(--muted);
-      line-height:1.55;
-    }
+    /* PROCESS */
+    .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:14px;margin:20px 0 48px;}
+    .step{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:22px 18px;text-align:center;transition:transform .18s,border-color .18s;}
+    .step:hover{transform:translateY(-4px);border-color:rgba(230,62,62,.22);}
+    .step-icon{font-size:1.9rem;margin-bottom:10px;}
+    .step h4{font-size:.97rem;font-weight:700;color:#e2e8f0;margin-bottom:7px;}
+    .step p{font-size:.85rem;color:var(--muted);line-height:1.55;}
 
-    /* ===== GARANTIES ===== */
-    .garanties{
-      background:linear-gradient(160deg, rgba(22,26,43,.95), rgba(22,26,43,.8));
-      border:1px solid rgba(255,255,255,.07);
-      border-radius:var(--radius);
-      padding:26px 28px;
-      box-shadow:var(--shadowSoft);
-      margin-bottom:40px;
-    }
-    .garanties ul{
-      margin:0;
-      padding:0;
-      list-style:none;
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap:10px;
-    }
-    .garanties li{
-      font-size:.97rem;
-      color:var(--muted);
-      padding:4px 0;
-    }
-    .garanties li b{ color:#fff; }
+    /* ENGAGEMENTS */
+    .engagements{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:26px 28px;margin-bottom:44px;}
+    .engagements ul{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;}
+    .engagements li{font-size:.9rem;color:var(--muted);padding:4px 0;display:flex;align-items:center;gap:7px;}
+    .engagements li::before{content:"✓";display:flex;align-items:center;justify-content:center;width:20px;height:20px;background:rgba(34,197,94,.12);color:#4ade80;border-radius:50%;font-size:.73rem;font-weight:900;flex-shrink:0;}
+    .engagements li b{color:#fff;}
 
-    /* ===== CTA ===== */
-    .cta-row{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-    }
-    .cta{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:14px 24px;
-      border-radius:999px;
-      font-weight:900;
-      text-decoration:none;
-      transition:transform .15s ease, box-shadow .15s ease;
-      box-shadow:var(--shadowSoft);
-    }
-    .cta-primary{
-      background:linear-gradient(135deg, rgba(0,212,255,.95), rgba(0,255,156,.9));
-      color:#041018;
-    }
-    .cta-primary:hover{ transform:translateY(-2px); box-shadow:var(--shadow); }
-    .cta-secondary{
-      background:rgba(22,26,43,.6);
-      border:1px solid rgba(255,255,255,.10);
-      color:var(--text);
-    }
-    .cta-secondary:hover{ transform:translateY(-2px); background:rgba(22,26,43,.85); }
+    /* CTA */
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap;}
+    .cta{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:999px;font-weight:700;font-size:.93rem;text-decoration:none;transition:transform .15s,box-shadow .15s;}
+    .cta-g{background:linear-gradient(135deg,#e63e3e,#c92a2a);color:#fff;box-shadow:0 4px 18px rgba(230,62,62,.35);}
+    .cta-g:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(230,62,62,.45);}
+    .cta-p{background:linear-gradient(135deg,#1d4ed8,#1e40af);color:#fff;box-shadow:0 4px 18px rgba(29,78,216,.35);}
+    .cta-p:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(29,78,216,.45);}
+    .cta-out{background:transparent;border:1px solid var(--border);color:var(--muted);}
+    .cta-out:hover{border-color:rgba(255,255,255,.25);color:#fff;}
 
-    footer{
-      text-align:center;
-      padding:26px 16px;
-      opacity:.75;
-      font-size:.9rem;
-      background:rgba(11,14,26,.85);
-      border-top:1px solid rgba(255,255,255,.06);
-    }
+    /* FOOTER */
+    footer{background:#080a0e;color:#8a94a8;text-align:center;padding:26px 16px;font-size:.85rem;border-top:1px solid rgba(255,255,255,.06);}
+    footer a{color:#8a94a8;text-decoration:none;margin:0 8px;}
+    footer a:hover{color:#fff;}
 
+    @media(max-width:700px){.dual-grid{grid-template-columns:1fr;}}
     @media(max-width:600px){
-      header{ height:160px; }
-      .header-content h1{ font-size:1.8rem; }
+      .page-header{padding:32px 16px 28px;}
+      .header-logo{font-size:1.9rem;}
+      .nav-phone{display:none;}
+      .content{padding:32px 16px 56px;}
+      .engagements{padding:20px 16px;}
     }
   </style>
 </head>
 <body>
 
-<header>
-  <div class="header-content">
-    <h1><span class="logo-cj">CJ</span> Tech</h1>
-    <p>PC Gaming testés, optimisés et prêts à jouer</p>
+<div class="top-bar">
+  <span>📍 Valenciennes et agglomération</span>
+  <div class="ci">
+    <a href="tel:+33610976758">📞 06 10 97 67 58</a>
+    <a href="mailto:chad@cj-tech.fr">✉ chad@cj-tech.fr</a>
   </div>
+</div>
+
+<header class="page-header">
+  <div class="header-logo"><span class="cj">CJ</span>-TECH<span class="fr">.FR</span></div>
+  <p>Votre partenaire informatique local — Valenciennes</p>
 </header>
 
 <nav>
-  <a href="index.html">Accueil</a> •
-  <a href="about.html">À propos</a> •
-  <a href="contact.html">Contact</a>
+  <a href="index.html" class="nav-link">Accueil</a>
+  <span class="nav-sep">|</span>
+  <a href="index.html#particuliers" class="nav-link">🎮 Particuliers</a>
+  <span class="nav-sep">|</span>
+  <a href="index.html#entreprises" class="nav-link">💼 Entreprises</a>
+  <span class="nav-sep">|</span>
+  <a href="contact.html" class="nav-link">Contact</a>
+  <span class="nav-phone">📞 <a href="tel:+33610976758">06 10 97 67 58</a></span>
 </nav>
 
 <div class="content">
 
-  <h2 class="section-title">À propos de CJ Tech</h2>
+  <h1 class="sec-title">À propos de <span>CJ-TECH.FR</span></h1>
 
-  <div class="intro-text">
-    <b>CJ Tech</b> est spécialisé dans la vente de PC gaming montés, testés et optimisés.
-    Chaque machine est assemblée avec soin,
-    stress-testée et entièrement configurée avant la vente — pour que tu joues
-    dès le premier démarrage, sans mauvaise surprise.<br><br>
-    L'objectif est simple : proposer des <b>PC performants au meilleur rapport qualité/prix</b>,
-    vendus en toute transparence via Vinted et Leboncoin.
+  <p class="intro">
+    <b>CJ-TECH.FR</b> est votre partenaire informatique local basé à <b>Valenciennes</b>.<br>
+    Deux activités complémentaires : la vente de <b>PC Gaming reconditionnés</b> pour les particuliers,
+    et des <b>services IT managés</b> pour les entreprises et indépendants de l'agglomération.
+    Dans les deux cas, l'objectif est le même — un service <b>fiable, transparent et au juste prix</b>.
+  </p>
+
+  <!-- DUAL ACTIVITY -->
+  <div class="dual-grid">
+    <div class="activity-card act-gaming">
+      <h3>🎮 Côté Particulier</h3>
+      <p>PC Gaming reconditionnés et assemblés, testés et optimisés avant chaque vente.</p>
+      <ul>
+        <li>Stress-test CPU & GPU systématique</li>
+        <li>Windows 11 activé, pilotes à jour</li>
+        <li>Achat sécurisé via Vinted ou Leboncoin</li>
+        <li>Support disponible après achat</li>
+      </ul>
+    </div>
+    <div class="activity-card act-pro">
+      <h3>💼 Côté Professionnel</h3>
+      <p>Infogérance, maintenance préventive et support informatique pour les entreprises locales.</p>
+      <ul>
+        <li>3 packs clairs dès 149€/mois</li>
+        <li>Audit gratuit sans engagement</li>
+        <li>Intervention sur site à Valenciennes</li>
+        <li>Interlocuteur unique et réactif</li>
+      </ul>
+    </div>
   </div>
 
-  <h2 class="section-title">Notre processus</h2>
+  <!-- PROCESS -->
+  <h2 class="sec-title" style="margin-bottom:6px;">Notre processus PC Gaming</h2>
+  <p style="color:var(--muted);font-size:.9rem;margin-bottom:0;">Chaque machine passe par ces étapes avant de vous être proposée.</p>
 
   <div class="steps">
     <div class="step">
       <div class="step-icon">🔧</div>
-      <h3>Assemblage</h3>
+      <h4>Assemblage</h4>
       <p>Sélection des composants, montage soigné et gestion des câbles.</p>
     </div>
     <div class="step">
       <div class="step-icon">🧪</div>
-      <h3>Stress-test</h3>
-      <p>Test intensif CPU &amp; GPU pour vérifier la stabilité et la température.</p>
+      <h4>Stress-test</h4>
+      <p>Test intensif CPU & GPU pour vérifier la stabilité et les températures.</p>
     </div>
     <div class="step">
       <div class="step-icon">⚙️</div>
-      <h3>Optimisation</h3>
+      <h4>Optimisation</h4>
       <p>Windows 11 propre, pilotes à jour, démarrage rapide configuré.</p>
     </div>
     <div class="step">
-      <div class="step-icon">🎮</div>
-      <h3>Prêt à jouer</h3>
-      <p>Livré ou remis en main propre — tu joues le jour même.</p>
+      <div class="step-icon">✅</div>
+      <h4>Prêt à jouer</h4>
+      <p>Livré ou remis en main propre — vous jouez le jour même.</p>
     </div>
   </div>
 
-  <h2 class="section-title">Nos engagements</h2>
+  <!-- ENGAGEMENTS -->
+  <h2 class="sec-title" style="margin-bottom:18px;">Nos engagements</h2>
 
-  <div class="garanties">
+  <div class="engagements">
     <ul>
-      <li>✅ <b>PC testés</b> avant chaque vente</li>
-      <li>✅ <b>Windows 11</b> activé et à jour</li>
-      <li>✅ <b>Pilotes GPU</b> installés</li>
-      <li>✅ <b>Achat sécurisé</b> via Vinted ou Leboncoin</li>
-      <li>✅ <b>Support</b> disponible après achat</li>
-      <li>✅ <b>Transparent</b> sur les specs et l'état</li>
+      <li><b>PC testés</b> avant chaque vente</li>
+      <li><b>Windows 11</b> activé et à jour</li>
+      <li><b>Pilotes GPU</b> installés</li>
+      <li><b>Achat sécurisé</b> via Vinted ou Leboncoin</li>
+      <li><b>Support</b> disponible après achat</li>
+      <li><b>Transparence</b> totale sur les specs</li>
+      <li><b>Audit gratuit</b> pour les entreprises</li>
+      <li><b>Intervention locale</b> à Valenciennes</li>
     </ul>
   </div>
 
   <div class="cta-row">
-    <a href="index.html#pcs" class="cta cta-primary">Voir les PC disponibles</a>
-    <a href="contact.html" class="cta cta-secondary">Me contacter</a>
+    <a href="index.html#particuliers" class="cta cta-g">🎮 Voir les PC Gaming</a>
+    <a href="index.html#entreprises" class="cta cta-p">💼 Découvrir les packs IT</a>
+    <a href="contact.html" class="cta cta-out">Nous contacter</a>
   </div>
 
 </div>
 
 <footer>
-  © 2026 - CJ Tech • PC Gaming testés, optimisés et prêts à jouer
+  © 2026 CJ-TECH.FR — Tous droits réservés &nbsp;|&nbsp;
+  <a href="index.html">Accueil</a>
+  <a href="contact.html">Contact</a>
+  &nbsp;|&nbsp; 📞 <a href="tel:+33610976758">06 10 97 67 58</a>
+  &nbsp;|&nbsp; ✉ <a href="mailto:chad@cj-tech.fr">chad@cj-tech.fr</a>
 </footer>
 
 </body>

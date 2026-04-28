@@ -2,401 +2,295 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Contact - CJ Tech</title>
+  <title>Contact — CJ-TECH.FR</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Contactez CJ Tech pour toute question, devis ou information sur nos PC Gaming prêts à jouer.">
-
-  <!-- Open Graph -->
+  <meta name="description" content="Contactez CJ-TECH.FR — PC Gaming particuliers ou services IT entreprises à Valenciennes. 06 10 97 67 58.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Contact - CJ Tech">
-  <meta property="og:description" content="Contactez CJ Tech pour toute question sur nos PC Gaming.">
+  <meta property="og:title" content="Contact — CJ-TECH.FR">
   <meta property="og:image" content="couverture.png">
   <meta property="og:locale" content="fr_FR">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
-
   <style>
     :root{
-      --bg:#0f1220;
-      --panel:#161a2b;
-      --text:#ffffff;
-      --muted:#cdd3e0;
-      --cyan:#00d4ff;
-      --green:#00ff9c;
-      --vinted:#09b1a5;
-      --vintedHover:#0cd1c3;
-      --lbc:#ff6a00;
-      --lbcHover:#ff8126;
-      --radius:16px;
-      --shadow: 0 10px 30px rgba(0,0,0,.45);
-      --shadowSoft: 0 6px 20px rgba(0,0,0,.35);
+      --bg:#0d0f14;--panel:#141720;--border:rgba(255,255,255,.07);
+      --text:#fff;--muted:#8a94a8;--accent:#e63e3e;--blue:#1d4ed8;
+      --radius:14px;--shadow:0 6px 24px rgba(0,0,0,.35);
     }
-    *{ box-sizing:border-box; }
-    body{
-      margin:0;
-      font-family: 'Inter', Arial, sans-serif;
-      background: radial-gradient(1200px 600px at 20% 0%, rgba(0,212,255,.08), transparent 60%),
-                  radial-gradient(900px 500px at 80% 10%, rgba(0,255,156,.06), transparent 60%),
-                  var(--bg);
-      color:var(--text);
-      scroll-behavior:smooth;
-    }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
 
-    /* ===== HEADER ===== */
-    header{
-      position:relative;
-      height:220px;
-      background: url("couverture.png") center center / cover no-repeat;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      overflow:hidden;
-      border-bottom:1px solid rgba(255,255,255,.06);
-    }
-    header::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(180deg, rgba(0,0,0,.5), rgba(15,18,32,.92));
-    }
-    .header-content{
-      position:relative;
-      z-index:1;
-      animation:fadeIn .8s ease-out;
-    }
-    .header-content h1{
-      margin:0;
-      font-size:2.4rem;
-      font-weight:900;
-      text-shadow:0 4px 18px rgba(0,0,0,.75);
-    }
-    .logo-cj{ color:var(--cyan); }
-    .header-content p{
-      margin:8px 0 0;
-      font-size:1rem;
-      color:#dce8f0;
-      opacity:.9;
-    }
+    /* TOP BAR */
+    .top-bar{background:#080a0e;color:#8a94a8;font-size:.82rem;padding:7px 24px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,.04);}
+    .top-bar a{color:#c8d3e8;text-decoration:none;}
+    .top-bar a:hover{color:#fff;}
+    .top-bar .ci{display:flex;gap:20px;flex-wrap:wrap;}
 
-    @keyframes fadeIn{
-      from{ opacity:0; transform:translateY(8px); }
-      to{ opacity:1; transform:translateY(0); }
-    }
+    /* HEADER */
+    .page-header{background:linear-gradient(135deg,#0d0f14,#141720);padding:44px 24px 36px;text-align:center;position:relative;overflow:hidden;border-bottom:1px solid rgba(255,255,255,.06);}
+    .page-header::before{content:"";position:absolute;inset:0;background:radial-gradient(600px 300px at 50% 50%,rgba(29,78,216,.08),transparent 60%);pointer-events:none;}
+    .header-logo{position:relative;font-size:2.4rem;font-weight:900;letter-spacing:-1px;margin-bottom:6px;}
+    .header-logo .cj{color:#e63e3e;}
+    .header-logo .fr{color:#8a94a8;font-weight:600;font-size:1.8rem;}
+    .page-header p{position:relative;color:#8a94a8;font-size:.97rem;}
 
-    /* ===== NAV ===== */
-    nav{
-      position:sticky;
-      top:0;
-      z-index:10;
-      background:rgba(11,14,26,.8);
-      backdrop-filter:blur(10px);
-      border-bottom:1px solid rgba(255,255,255,.06);
-      text-align:center;
-      padding:12px 10px;
-    }
-    nav a{
-      color:var(--cyan);
-      margin:0 12px;
-      text-decoration:none;
-      font-weight:900;
-      opacity:.9;
-    }
-    nav a:hover{ opacity:1; text-decoration:underline; }
+    /* NAV */
+    nav{position:sticky;top:0;z-index:100;background:rgba(8,10,14,.94);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;gap:4px;padding:0 20px;height:52px;flex-wrap:wrap;}
+    .nav-link{display:inline-flex;align-items:center;gap:5px;padding:7px 16px;border-radius:999px;color:#8a94a8;font-weight:600;font-size:.87rem;text-decoration:none;transition:all .15s;white-space:nowrap;}
+    .nav-link:hover{color:#fff;background:rgba(255,255,255,.07);}
+    .nav-sep{color:rgba(255,255,255,.15);padding:0 2px;}
+    .nav-phone{margin-left:auto;font-size:.82rem;font-weight:600;white-space:nowrap;}
+    .nav-phone a{color:#c8d3e8;text-decoration:none;}
+    .nav-phone a:hover{color:#fff;}
 
-    /* ===== CONTENT ===== */
-    .content{
-      max-width:680px;
-      margin:48px auto;
-      padding:0 20px 60px;
-      animation:fadeIn .7s ease-out .1s both;
-    }
-    .section-title{
-      font-size:1.7rem;
-      font-weight:900;
-      color:var(--cyan);
-      margin:0 0 24px;
-    }
+    /* CONTENT */
+    .content{max-width:820px;margin:0 auto;padding:48px 24px 72px;}
 
-    /* ===== CONTACT CARDS ===== */
-    .contact-grid{
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap:16px;
-      margin-bottom:28px;
-    }
-    .contact-card{
-      background:linear-gradient(160deg, rgba(22,26,43,.95), rgba(22,26,43,.8));
-      border:1px solid rgba(255,255,255,.07);
-      border-radius:var(--radius);
-      padding:22px 20px;
-      text-align:center;
-      text-decoration:none;
-      color:var(--text);
-      box-shadow:var(--shadowSoft);
-      transition:transform .18s ease, border-color .18s ease, box-shadow .18s ease;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:10px;
-    }
-    .contact-card:hover{
-      transform:translateY(-4px);
-      box-shadow:0 14px 36px rgba(0,0,0,.5);
-      border-color:rgba(0,212,255,.25);
-    }
-    .contact-card .icon{
-      font-size:2rem;
-    }
-    .contact-card .label{
-      font-size:.82rem;
-      font-weight:700;
-      text-transform:uppercase;
-      letter-spacing:.5px;
-      color:var(--muted);
-    }
-    .contact-card .value{
-      font-size:1rem;
-      font-weight:700;
-      color:#eaf7ff;
-      word-break:break-all;
-    }
+    /* CONTACT METHODS */
+    .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:14px;margin-bottom:36px;}
+    .contact-card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:22px 18px;text-align:center;text-decoration:none;color:var(--text);box-shadow:var(--shadow);transition:transform .18s,border-color .18s;display:flex;flex-direction:column;align-items:center;gap:9px;}
+    .contact-card:hover{transform:translateY(-4px);}
+    .contact-card .icon{font-size:1.9rem;}
+    .contact-card .label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);}
+    .contact-card .value{font-size:.95rem;font-weight:700;word-break:break-all;}
+    .cc-tel:hover{border-color:rgba(34,197,94,.35);} .cc-tel .value{color:#4ade80;}
+    .cc-wa:hover{border-color:rgba(37,211,102,.35);} .cc-wa .value{color:#25d366;}
+    .cc-email:hover{border-color:rgba(29,78,216,.35);} .cc-email .value{color:#60a5fa;}
+    .cc-vinted:hover{border-color:rgba(9,177,165,.35);} .cc-vinted .value{color:#09b1a5;}
+    .cc-lbc:hover{border-color:rgba(255,106,0,.35);} .cc-lbc .value{color:#ff6a00;}
 
-    .contact-card.vinted{ border-color:rgba(9,177,165,.2); }
-    .contact-card.vinted:hover{ border-color:rgba(9,177,165,.5); }
-    .contact-card.vinted .value{ color:var(--vinted); }
+    /* TABS */
+    .form-tabs{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap;}
+    .form-tab{padding:9px 20px;border-radius:999px;border:1px solid var(--border);background:rgba(20,23,32,.6);color:var(--muted);cursor:pointer;font-family:'Inter',sans-serif;font-weight:600;font-size:.87rem;transition:all .15s;}
+    .form-tab:hover{color:#fff;}
+    .form-tab.active-g{background:rgba(230,62,62,.14);border-color:rgba(230,62,62,.45);color:#ff6b6b;}
+    .form-tab.active-p{background:rgba(29,78,216,.14);border-color:rgba(29,78,216,.45);color:#60a5fa;}
 
-    .contact-card.lbc{ border-color:rgba(255,106,0,.2); }
-    .contact-card.lbc:hover{ border-color:rgba(255,106,0,.5); }
-    .contact-card.lbc .value{ color:var(--lbc); }
+    /* FORM */
+    .form-panel{display:none;}
+    .form-panel.active{display:block;}
+    .contact-form{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:28px 26px;display:flex;flex-direction:column;gap:16px;}
+    .form-group{display:flex;flex-direction:column;gap:6px;}
+    .form-label{font-size:.78rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;}
+    .form-input,.form-select,.form-textarea{width:100%;padding:11px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.10);background:rgba(8,10,14,.7);color:#fff;font-family:'Inter',sans-serif;font-size:.9rem;outline:none;transition:border-color .15s;}
+    .form-input:focus,.form-textarea:focus{border-color:rgba(29,78,216,.5);}
+    .form-select option{background:#141720;}
+    .form-textarea{resize:vertical;min-height:110px;}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+    .btn-submit{padding:13px 28px;border:none;border-radius:999px;font-family:'Inter',sans-serif;font-weight:700;font-size:.95rem;cursor:pointer;transition:transform .15s,filter .15s;align-self:flex-start;}
+    .btn-g{background:linear-gradient(135deg,#e63e3e,#c92a2a);color:#fff;}
+    .btn-g:hover{transform:translateY(-2px);filter:brightness(1.08);}
+    .btn-p{background:linear-gradient(135deg,#1d4ed8,#1e40af);color:#fff;}
+    .btn-p:hover{transform:translateY(-2px);filter:brightness(1.08);}
+    .form-success{display:none;padding:13px 16px;background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.2);border-radius:10px;color:#4ade80;font-weight:600;font-size:.9rem;}
 
-    .contact-card.email:hover{ border-color:rgba(0,212,255,.4); }
-    .contact-card.email .value{ color:var(--cyan); }
+    /* INFO BOX */
+    .info-box{background:rgba(29,78,216,.06);border:1px solid rgba(29,78,216,.15);border-radius:var(--radius);padding:18px 22px;font-size:.92rem;color:var(--muted);line-height:1.65;margin-bottom:32px;}
+    .info-box b{color:#fff;}
 
-    .contact-card.whatsapp{ border-color:rgba(37,211,102,.2); }
-    .contact-card.whatsapp:hover{ border-color:rgba(37,211,102,.5); }
-    .contact-card.whatsapp .value{ color:#25d366; }
+    /* SECTION TITLE */
+    .sec-title{font-size:1.4rem;font-weight:900;color:#fff;margin-bottom:6px;}
+    .sec-sub{font-size:.9rem;color:var(--muted);margin-bottom:24px;}
 
-    /* ===== FORMULAIRE ===== */
-    .form-section{
-      margin-top:36px;
-    }
-    .form-section .section-title{
-      margin-bottom:16px;
-    }
-    .contact-form{
-      background:linear-gradient(160deg, rgba(22,26,43,.95), rgba(22,26,43,.8));
-      border:1px solid rgba(255,255,255,.07);
-      border-radius:var(--radius);
-      padding:28px 26px;
-      box-shadow:var(--shadowSoft);
-      display:flex;
-      flex-direction:column;
-      gap:16px;
-    }
-    .contact-form label{
-      font-size:.88rem;
-      font-weight:700;
-      color:var(--muted);
-      text-transform:uppercase;
-      letter-spacing:.4px;
-      display:block;
-      margin-bottom:6px;
-    }
-    .contact-form input,
-    .contact-form select,
-    .contact-form textarea{
-      width:100%;
-      padding:12px 14px;
-      border-radius:10px;
-      border:1px solid rgba(255,255,255,.10);
-      background:rgba(11,14,26,.7);
-      color:#fff;
-      font-family:'Inter',Arial,sans-serif;
-      font-size:.97rem;
-      outline:none;
-      transition:border-color .15s ease;
-    }
-    .contact-form input:focus,
-    .contact-form select,
-    .contact-form textarea:focus{
-      border-color:rgba(0,212,255,.5);
-    }
-    .contact-form textarea{
-      resize:vertical;
-      min-height:110px;
-    }
-    .contact-form select option{
-      background:#161a2b;
-    }
-    .btn-submit{
-      padding:14px 28px;
-      border:none;
-      border-radius:999px;
-      background:linear-gradient(135deg, rgba(0,212,255,.95), rgba(0,255,156,.9));
-      color:#041018;
-      font-weight:900;
-      font-size:1rem;
-      cursor:pointer;
-      transition:transform .15s ease, filter .15s ease;
-      align-self:flex-start;
-    }
-    .btn-submit:hover{ transform:translateY(-2px); filter:brightness(1.04); }
-    .form-success{
-      display:none;
-      padding:14px 18px;
-      background:rgba(0,255,156,.08);
-      border:1px solid rgba(0,255,156,.2);
-      border-radius:12px;
-      color:var(--green);
-      font-weight:700;
-      font-size:.97rem;
-    }
-
-    /* ===== HINT BOX ===== */
-    .hint-box{
-      background:rgba(0,212,255,.06);
-      border:1px solid rgba(0,212,255,.15);
-      border-radius:var(--radius);
-      padding:18px 22px;
-      font-size:.95rem;
-      color:var(--muted);
-      line-height:1.65;
-    }
-    .hint-box b{ color:#fff; }
-
-    footer{
-      text-align:center;
-      padding:26px 16px;
-      opacity:.75;
-      font-size:.9rem;
-      background:rgba(11,14,26,.85);
-      border-top:1px solid rgba(255,255,255,.06);
-    }
+    /* FOOTER */
+    footer{background:#080a0e;color:#8a94a8;text-align:center;padding:26px 16px;font-size:.85rem;border-top:1px solid rgba(255,255,255,.06);}
+    footer a{color:#8a94a8;text-decoration:none;margin:0 8px;}
+    footer a:hover{color:#fff;}
 
     @media(max-width:600px){
-      header{ height:160px; }
-      .header-content h1{ font-size:1.8rem; }
+      .page-header{padding:32px 16px 28px;}
+      .header-logo{font-size:1.9rem;}
+      .nav-phone{display:none;}
+      .form-row{grid-template-columns:1fr;}
+      .content{padding:32px 16px 56px;}
+      .contact-form{padding:20px 16px;}
     }
   </style>
 </head>
 <body>
 
-<header>
-  <div class="header-content">
-    <h1><span class="logo-cj">CJ</span> Tech</h1>
-    <p>PC Gaming testés, optimisés et prêts à jouer</p>
+<div class="top-bar">
+  <span>📍 Valenciennes et agglomération</span>
+  <div class="ci">
+    <a href="tel:+33610976758">📞 06 10 97 67 58</a>
+    <a href="mailto:chad@cj-tech.fr">✉ chad@cj-tech.fr</a>
   </div>
+</div>
+
+<header class="page-header">
+  <div class="header-logo"><span class="cj">CJ</span>-TECH<span class="fr">.FR</span></div>
+  <p>Votre partenaire informatique local — Valenciennes</p>
 </header>
 
 <nav>
-  <a href="index.html">Accueil</a> •
-  <a href="about.html">À propos</a> •
-  <a href="contact.html">Contact</a>
+  <a href="index.html" class="nav-link">Accueil</a>
+  <span class="nav-sep">|</span>
+  <a href="index.html#particuliers" class="nav-link">🎮 Particuliers</a>
+  <span class="nav-sep">|</span>
+  <a href="index.html#entreprises" class="nav-link">💼 Entreprises</a>
+  <span class="nav-sep">|</span>
+  <a href="about.html" class="nav-link">À propos</a>
+  <span class="nav-phone">📞 <a href="tel:+33610976758">06 10 97 67 58</a></span>
 </nav>
 
 <div class="content">
 
-  <h2 class="section-title">Nous contacter</h2>
+  <h1 class="sec-title">Nous contacter</h1>
+  <p class="sec-sub">Réponse garantie dans la journée — 7j/7 sur WhatsApp</p>
 
   <div class="contact-grid">
-
-    <a class="contact-card email" href="mailto:chad@cj-tech.fr">
-      <div class="icon">📧</div>
-      <div class="label">Email</div>
-      <div class="value">chad@cj-tech.fr</div>
+    <a class="contact-card cc-tel" href="tel:+33610976758">
+      <div class="icon">📞</div>
+      <div class="label">Téléphone</div>
+      <div class="value">06 10 97 67 58</div>
     </a>
-
-    <a class="contact-card vinted" href="https://www.vinted.fr/member/49189698" target="_blank" rel="noopener noreferrer">
-      <div class="icon">🛒</div>
-      <div class="label">Vinted</div>
-      <div class="value">Voir mon profil</div>
-    </a>
-
-    <a class="contact-card lbc" href="https://www.leboncoin.fr/profile/4555ce52-c61b-4f81-9fb8-c66f889a5e4e" target="_blank" rel="noopener noreferrer">
-      <div class="icon">🛒</div>
-      <div class="label">Leboncoin</div>
-      <div class="value">Voir mon profil</div>
-    </a>
-
-    <!-- WhatsApp : remplace le numéro 33XXXXXXXXX par ton vrai numéro -->
-    <a class="contact-card whatsapp" href="https://wa.me/33XXXXXXXXX?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%20par%20un%20de%20vos%20PC%20Gaming%20!" target="_blank" rel="noopener noreferrer">
+    <a class="contact-card cc-wa" href="https://wa.me/33610976758?text=Bonjour%2C%20je%20vous%20contacte%20depuis%20CJ-TECH.FR" target="_blank" rel="noopener">
       <div class="icon">💬</div>
       <div class="label">WhatsApp</div>
       <div class="value">Écrire un message</div>
     </a>
-
+    <a class="contact-card cc-email" href="mailto:chad@cj-tech.fr">
+      <div class="icon">✉️</div>
+      <div class="label">Email</div>
+      <div class="value">chad@cj-tech.fr</div>
+    </a>
+    <a class="contact-card cc-vinted" href="https://www.vinted.fr/member/49189698" target="_blank" rel="noopener">
+      <div class="icon">🛒</div>
+      <div class="label">Vinted</div>
+      <div class="value">Voir mon profil</div>
+    </a>
+    <a class="contact-card cc-lbc" href="https://www.leboncoin.fr/profile/4555ce52-c61b-4f81-9fb8-c66f889a5e4e" target="_blank" rel="noopener">
+      <div class="icon">🛒</div>
+      <div class="label">Leboncoin</div>
+      <div class="value">Voir mon profil</div>
+    </a>
   </div>
 
-  <div class="hint-box">
+  <div class="info-box">
     💡 <b>Réponse rapide</b> — je réponds en général dans la journée par email, WhatsApp ou messagerie Vinted / Leboncoin.<br>
-    N'hésite pas à poser toutes tes questions : config, compatibilité, disponibilité, livraison, etc.
+    N'hésitez pas à poser toutes vos questions : config, compatibilité, disponibilité, livraison, services IT, devis…
   </div>
 
-  <!-- Formulaire de contact -->
-  <div class="form-section">
-    <h2 class="section-title">Envoyer un message</h2>
+  <!-- TABS -->
+  <div class="form-tabs">
+    <button class="form-tab active-g" onclick="switchTab('gaming', this)" type="button">🎮 Particulier — PC Gaming</button>
+    <button class="form-tab" onclick="switchTab('pro', this)" type="button">💼 Entreprise — Services IT</button>
+  </div>
 
-    <!-- Formspree : crée un compte sur formspree.io et remplace YOUR_FORM_ID -->
-    <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" id="contactForm">
-      <div>
-        <label for="name">Ton prénom</label>
-        <input type="text" id="name" name="name" placeholder="Ex : Thomas" required>
+  <!-- FORM PARTICULIER -->
+  <div class="form-panel active" id="panel-gaming">
+    <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" id="formGaming">
+      <div class="form-group">
+        <label class="form-label" for="g-name">Votre prénom</label>
+        <input class="form-input" type="text" id="g-name" name="name" placeholder="Ex : Thomas" required>
       </div>
-      <div>
-        <label for="email">Ton email</label>
-        <input type="email" id="email" name="email" placeholder="exemple@mail.com" required>
+      <div class="form-group">
+        <label class="form-label" for="g-email">Email</label>
+        <input class="form-input" type="email" id="g-email" name="email" placeholder="exemple@mail.com" required>
       </div>
-      <div>
-        <label for="subject">PC concerné</label>
-        <select id="subject" name="subject">
-          <option value="Ryzen 5 - RX 580 8Go (400€)">Ryzen 5 — RX 580 8Go (400€)</option>
-          <option value="Ryzen 5 - RX 5700 XT (500€)">Ryzen 5 — RX 5700 XT (500€)</option>
-          <option value="Ryzen 5 - RX 6500 XT (400€)">Ryzen 5 — RX 6500 XT (400€)</option>
+      <div class="form-group">
+        <label class="form-label" for="g-subject">PC concerné</label>
+        <select class="form-input form-select" id="g-subject" name="subject">
+          <option value="Ryzen 5 - RX 580 8Go">Ryzen 5 — RX 580 8 Go</option>
+          <option value="Ryzen 5 - RX 5700 XT">Ryzen 5 — RX 5700 XT</option>
+          <option value="Ryzen 5 - RX 6500 XT">Ryzen 5 — RX 6500 XT</option>
           <option value="Question générale">Question générale</option>
         </select>
       </div>
-      <div>
-        <label for="message">Message</label>
-        <textarea id="message" name="message" placeholder="Pose ta question, demande la dispo, les frais de port..." required></textarea>
+      <div class="form-group">
+        <label class="form-label" for="g-message">Message</label>
+        <textarea class="form-textarea" id="g-message" name="message" placeholder="Disponibilité, frais de port, config…" required></textarea>
       </div>
-      <button type="submit" class="btn-submit">Envoyer le message</button>
-      <div class="form-success" id="formSuccess">✅ Message envoyé ! Je te réponds dans la journée.</div>
+      <button type="submit" class="btn-submit btn-g">Envoyer le message</button>
+      <div class="form-success" id="successGaming">✅ Message envoyé ! Je te réponds dans la journée.</div>
+    </form>
+  </div>
+
+  <!-- FORM ENTREPRISE -->
+  <div class="form-panel" id="panel-pro">
+    <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" id="formPro">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="p-prenom">Prénom</label>
+          <input class="form-input" type="text" id="p-prenom" name="prenom" placeholder="Jean" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="p-societe">Société</label>
+          <input class="form-input" type="text" id="p-societe" name="societe" placeholder="Ma Société SAS" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="p-email">Email professionnel</label>
+        <input class="form-input" type="email" id="p-email" name="email" placeholder="contact@masociete.fr" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="p-tel">Téléphone</label>
+        <input class="form-input" type="tel" id="p-tel" name="telephone" placeholder="06 XX XX XX XX">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="p-besoin">Besoin</label>
+        <select class="form-input form-select" id="p-besoin" name="besoin">
+          <option value="audit">Audit informatique gratuit</option>
+          <option value="start">Pack Start (149€/mois)</option>
+          <option value="business">Pack Business (249€/mois)</option>
+          <option value="pro">Pack Pro (449€/mois)</option>
+          <option value="devis">Devis sur mesure</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="p-message">Détails</label>
+        <textarea class="form-textarea" id="p-message" name="message" placeholder="Nombre de postes, infrastructure actuelle, besoins spécifiques…"></textarea>
+      </div>
+      <button type="submit" class="btn-submit btn-p">Envoyer la demande</button>
+      <div class="form-success" id="successPro">✅ Demande reçue ! Je vous contacte sous 24h.</div>
     </form>
   </div>
 
 </div>
 
 <footer>
-  © 2026 - CJ Tech • Contact : chad@cj-tech.fr
+  © 2026 CJ-TECH.FR — Tous droits réservés &nbsp;|&nbsp;
+  <a href="index.html">Accueil</a>
+  <a href="index.html#particuliers">PC Gaming</a>
+  <a href="index.html#entreprises">Services IT</a>
+  &nbsp;|&nbsp; 📞 <a href="tel:+33610976758">06 10 97 67 58</a>
+  &nbsp;|&nbsp; ✉ <a href="mailto:chad@cj-tech.fr">chad@cj-tech.fr</a>
 </footer>
 
 <script>
-  const form = document.getElementById('contactForm');
-  if(form){
-    form.addEventListener('submit', async function(e){
+  function switchTab(type, btn) {
+    document.querySelectorAll(".form-tab").forEach(t => t.classList.remove("active-g","active-p"));
+    document.querySelectorAll(".form-panel").forEach(p => p.classList.remove("active"));
+    btn.classList.add(type === "gaming" ? "active-g" : "active-p");
+    document.getElementById("panel-" + type).classList.add("active");
+  }
+
+  function handleForm(formId, successId) {
+    const form = document.getElementById(formId);
+    if (!form) return;
+    form.addEventListener("submit", async function(e) {
       e.preventDefault();
-      const btn = form.querySelector('.btn-submit');
-      btn.textContent = 'Envoi en cours…';
+      const btn = form.querySelector(".btn-submit");
+      const orig = btn.textContent;
+      btn.textContent = "Envoi en cours…";
       btn.disabled = true;
-      const data = new FormData(form);
-      const response = await fetch(form.action, {
-        method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      });
-      if(response.ok){
-        form.reset();
-        document.getElementById('formSuccess').style.display = 'block';
-        btn.style.display = 'none';
-      } else {
-        btn.textContent = 'Envoyer le message';
+      try {
+        const res = await fetch(form.action, { method: "POST", body: new FormData(form), headers: { "Accept": "application/json" } });
+        if (res.ok) {
+          form.reset();
+          document.getElementById(successId).style.display = "block";
+          btn.style.display = "none";
+        } else throw new Error();
+      } catch {
+        btn.textContent = orig;
         btn.disabled = false;
-        alert('Erreur lors de l\'envoi. Contacte-moi directement à chad@cj-tech.fr');
+        alert("Erreur d'envoi. Contactez-moi au 06 10 97 67 58 ou chad@cj-tech.fr");
       }
     });
   }
+  handleForm("formGaming", "successGaming");
+  handleForm("formPro", "successPro");
 </script>
-
 </body>
 </html>
