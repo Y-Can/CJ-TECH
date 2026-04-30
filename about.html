@@ -6,7 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="CJ-TECH.FR — Qui sommes-nous ? PC Gaming reconditionnés et services IT à Valenciennes.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap"></noscript>
   <meta property="og:type" content="website">
   <meta property="og:title" content="À propos — CJ-TECH.FR">
   <meta property="og:image" content="couverture.png">
@@ -105,6 +107,7 @@
       .content{padding:32px 16px 56px;}
       .engagements{padding:20px 16px;}
     }
+    :focus-visible{outline:2px solid #e63e3e;outline-offset:3px;border-radius:4px;}
   </style>
 </head>
 <body>
@@ -124,11 +127,11 @@
 
 <nav>
   <a href="index.html" class="nav-link">Accueil</a>
-  <span class="nav-sep">|</span>
+  <span class="nav-sep" aria-hidden="true">|</span>
   <a href="index.html#particuliers" class="nav-link">🎮 Particuliers</a>
-  <span class="nav-sep">|</span>
+  <span class="nav-sep" aria-hidden="true">|</span>
   <a href="index.html#entreprises" class="nav-link">💼 Entreprises</a>
-  <span class="nav-sep">|</span>
+  <span class="nav-sep" aria-hidden="true">|</span>
   <a href="contact.html" class="nav-link">Contact</a>
   <span class="nav-phone">📞 <a href="tel:+33610976758">06 10 97 67 58</a></span>
 </nav>
