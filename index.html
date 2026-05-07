@@ -721,7 +721,7 @@
         <div class="review-card" style="animation-delay:${i*.07}s">
           <div class="review-stars">${starsHtml(a.note)}</div>
           <p class="review-text">"${a.commentaire||"Très satisfait !"}"</p>
-          ${a.article?`<div class="review-product">🖥️ ${a.article}`:""}
+          ${a.article?`<div class="review-product">🖥️ ${a.article}</div>`:""}
           <div class="review-meta">— ${a.acheteur}${a.date?" · "+formatDate(a.date):""}</div>
         </div>`).join("");
     } catch {
