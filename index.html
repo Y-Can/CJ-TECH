@@ -7,7 +7,10 @@
   <meta name="description" content="CJ-TECH.FR Valenciennes : PC Gaming reconditionnés, dépannage informatique et infogérance TPE/PME dès 149€/mois. Audit gratuit. ☎ 06 10 97 67 58">
   <link rel="canonical" href="https://cj-tech.fr/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap"></noscript>
+  <link rel="dns-prefetch" href="//images1.vinted.net">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Service informatique Valenciennes — PC Gaming &amp; IT | CJ-TECH.FR">
   <meta property="og:description" content="PC Gaming reconditionnés et services IT à Valenciennes. Dépannage, infogérance, audit gratuit. ☎ 06 10 97 67 58">
@@ -65,7 +68,7 @@
       --g-bg:#0d0f14; --g-panel:#141720; --g-border:rgba(255,255,255,.07);
       --g-text:#fff; --g-muted:#8a94a8; --g-accent:#e63e3e; --g-accent2:#ff6b6b;
       --p-bg:#f1f4f9; --p-surface:#fff; --p-border:#e2e8f0;
-      --p-text:#1e293b; --p-muted:#64748b; --p-accent:#1d4ed8; --p-accent2:#2563eb;
+      --p-text:#1e293b; --p-muted:#536171; --p-accent:#1d4ed8; --p-accent2:#2563eb;
       --radius:14px;
     }
     *{box-sizing:border-box;margin:0;padding:0;}
@@ -277,6 +280,8 @@
       .packs-container{padding:0 12px;}
       .product-grid{padding:0 12px;}
     }
+    :focus-visible{outline:2px solid #e63e3e;outline-offset:3px;border-radius:4px;}
+    .pro-section :focus-visible{outline-color:#1d4ed8;}
   </style>
 </head>
 <body>
@@ -303,11 +308,11 @@
 <!-- STICKY NAV -->
 <nav class="sticky-nav">
   <a href="#particuliers" class="nav-link nav-g">🎮 Particuliers</a>
-  <span class="nav-sep">|</span>
+  <span class="nav-sep" aria-hidden="true">|</span>
   <a href="#entreprises" class="nav-link nav-p">💼 Entreprises</a>
-  <span class="nav-sep">|</span>
+  <span class="nav-sep" aria-hidden="true">|</span>
   <a href="#avis" class="nav-link">⭐ Avis</a>
-  <span class="nav-sep">|</span>
+  <span class="nav-sep" aria-hidden="true">|</span>
   <a href="contact.html" class="nav-link">Contact</a>
   <span class="nav-phone">📞 <a href="tel:+33610976758">06 10 97 67 58</a></span>
 </nav>
@@ -327,23 +332,23 @@
     <b>💬 Support disponible</b>
   </div>
 
-  <div class="cat-tabs" id="cat-tabs" role="tablist">
-    <button class="cat-tab active" data-cat="all" type="button">Tout <span class="count"></span></button>
-    <button class="cat-tab" data-cat="pc" type="button">PC Gaming <span class="count"></span></button>
-    <button class="cat-tab" data-cat="composant" type="button">Composants <span class="count"></span></button>
-    <button class="cat-tab" data-cat="peripherique" type="button">Périphériques <span class="count"></span></button>
-    <button class="cat-tab" data-cat="autre" type="button">Autres <span class="count"></span></button>
+  <div class="cat-tabs" id="cat-tabs" role="tablist" aria-label="Filtrer les produits">
+    <button class="cat-tab active" data-cat="all" type="button" role="tab" aria-selected="true" aria-controls="grid">Tout <span class="count"></span></button>
+    <button class="cat-tab" data-cat="pc" type="button" role="tab" aria-selected="false" aria-controls="grid">PC Gaming <span class="count"></span></button>
+    <button class="cat-tab" data-cat="composant" type="button" role="tab" aria-selected="false" aria-controls="grid">Composants <span class="count"></span></button>
+    <button class="cat-tab" data-cat="peripherique" type="button" role="tab" aria-selected="false" aria-controls="grid">Périphériques <span class="count"></span></button>
+    <button class="cat-tab" data-cat="autre" type="button" role="tab" aria-selected="false" aria-controls="grid">Autres <span class="count"></span></button>
   </div>
 
   <div class="filters" id="pcs">
     <div class="selects">
-      <select id="filter-gpu">
+      <select id="filter-gpu" aria-label="Filtrer par carte graphique">
         <option value="all">Toutes les cartes graphiques</option>
         <option value="580">RX 580 8 Go</option>
         <option value="5700xt">RX 5700 XT</option>
         <option value="6500xt">RX 6500 XT</option>
       </select>
-      <select id="filter-budget">
+      <select id="filter-budget" aria-label="Filtrer par budget">
         <option value="all">Tous les budgets</option>
         <option value="0-450">≤ 450 €</option>
         <option value="451-550">450 € – 550 €</option>
@@ -352,7 +357,7 @@
     <span class="filter-hint">Cliquez sur un PC puis choisissez Vinted ou Leboncoin</span>
   </div>
 
-  <div class="product-grid" id="grid">
+  <div class="product-grid" id="grid" role="tabpanel">
     <div style="grid-column:1/-1;text-align:center;padding:56px 0;color:var(--g-muted);">Chargement des annonces…</div>
   </div>
 
@@ -602,8 +607,12 @@
 
   document.querySelectorAll(".cat-tab").forEach(tab => {
     tab.addEventListener("click", () => {
-      document.querySelectorAll(".cat-tab").forEach(t => t.classList.remove("active"));
+      document.querySelectorAll(".cat-tab").forEach(t => {
+        t.classList.remove("active");
+        t.setAttribute("aria-selected", "false");
+      });
       tab.classList.add("active");
+      tab.setAttribute("aria-selected", "true");
       activeCat = tab.dataset.cat;
       gpuFilter.style.display = (activeCat === "all" || activeCat === "pc") ? "" : "none";
       renderGrid();
@@ -645,7 +654,7 @@
     return `
     <div class="card${p.vendu ? " sold-out" : ""}" data-gpu="${p.gpu||"autre"}" data-price="${p.prix}" data-cat="${cat}" style="animation-delay:${index*.08}s">
       <div class="media">
-        <img src="${p.image}" alt="${p.nom}" loading="lazy" onerror="this.src='couverture.png'">
+        <img src="${p.image}" alt="${p.nom}" loading="lazy" width="310" height="430" onerror="this.src='couverture.png'">
         <div class="badges">${mainBadge}${statusBadge}${testedBadge}</div>
       </div>
       <h2>${p.nom}</h2>
@@ -656,10 +665,10 @@
       </div>
       <div class="btns">
         <div class="btn-col">
-          <a class="btn btn-vinted" href="${p.vinted}" target="_blank" rel="noopener">Vinted</a>
-          <a class="btn btn-lbc" href="${p.leboncoin}" target="_blank" rel="noopener">Leboncoin</a>
+          <a class="btn btn-vinted" href="${p.vinted}" target="_blank" rel="noopener" aria-label="Voir ${p.nom} sur Vinted">Vinted</a>
+          <a class="btn btn-lbc" href="${p.leboncoin}" target="_blank" rel="noopener" aria-label="Voir ${p.nom} sur Leboncoin">Leboncoin</a>
         </div>
-        <a class="btn btn-whatsapp" href="https://wa.me/33610976758?text=${waMsg}" target="_blank" rel="noopener">💬 WhatsApp</a>
+        <a class="btn btn-whatsapp" href="https://wa.me/33610976758?text=${waMsg}" target="_blank" rel="noopener" aria-label="Contacter via WhatsApp pour ${p.nom}">💬 WhatsApp</a>
       </div>
     </div>`;
   }

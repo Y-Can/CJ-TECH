@@ -7,7 +7,9 @@
   <meta name="description" content="Contactez CJ-TECH.FR à Valenciennes : dépannage informatique, PC gaming, infogérance entreprises. Réponse sous 24h. ☎ 06 10 97 67 58 — chad@cj-tech.fr">
   <link rel="canonical" href="https://cj-tech.fr/contact.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap"></noscript>
   <meta property="og:type" content="website">
   <meta property="og:title" content="Contact — Dépannage informatique Valenciennes | CJ-TECH.FR">
   <meta property="og:description" content="Contactez votre informaticien à Valenciennes. ☎ 06 10 97 67 58">
@@ -135,6 +137,7 @@
       .content{padding:32px 16px 56px;}
       .contact-form{padding:20px 16px;}
     }
+    :focus-visible{outline:2px solid #e63e3e;outline-offset:3px;border-radius:4px;}
   </style>
 </head>
 <body>
@@ -154,11 +157,11 @@
 
 <nav>
   <a href="index.html" class="nav-link">Accueil</a>
-  <span class="nav-sep">|</span>
+  <span class="nav-sep" aria-hidden="true">|</span>
   <a href="index.html#particuliers" class="nav-link">🎮 Particuliers</a>
-  <span class="nav-sep">|</span>
+  <span class="nav-sep" aria-hidden="true">|</span>
   <a href="index.html#entreprises" class="nav-link">💼 Entreprises</a>
-  <span class="nav-sep">|</span>
+  <span class="nav-sep" aria-hidden="true">|</span>
   <a href="about.html" class="nav-link">À propos</a>
   <span class="nav-phone">📞 <a href="tel:+33610976758">06 10 97 67 58</a></span>
 </nav>
@@ -203,8 +206,8 @@
 
   <!-- TABS -->
   <div class="form-tabs">
-    <button class="form-tab active-g" onclick="switchTab('gaming', this)" type="button">🎮 Particulier — PC Gaming</button>
-    <button class="form-tab" onclick="switchTab('pro', this)" type="button">💼 Entreprise — Services IT</button>
+    <button class="form-tab active-g" onclick="switchTab('gaming', this)" type="button" role="tab" aria-selected="true">🎮 Particulier — PC Gaming</button>
+    <button class="form-tab" onclick="switchTab('pro', this)" type="button" role="tab" aria-selected="false">💼 Entreprise — Services IT</button>
   </div>
 
   <!-- FORM PARTICULIER -->
@@ -297,9 +300,13 @@
 
 <script>
   function switchTab(type, btn) {
-    document.querySelectorAll(".form-tab").forEach(t => t.classList.remove("active-g","active-p"));
+    document.querySelectorAll(".form-tab").forEach(t => {
+      t.classList.remove("active-g","active-p");
+      t.setAttribute("aria-selected", "false");
+    });
     document.querySelectorAll(".form-panel").forEach(p => p.classList.remove("active"));
     btn.classList.add(type === "gaming" ? "active-g" : "active-p");
+    btn.setAttribute("aria-selected", "true");
     document.getElementById("panel-" + type).classList.add("active");
   }
 
